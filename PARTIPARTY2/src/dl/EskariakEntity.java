@@ -10,7 +10,15 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="Eskariak")
-@NamedQuery(name="EskariakEntity.findAll", query="SELECT e FROM EskariakEntity e")
+@NamedQueries({
+	@NamedQuery(name="EskariakEntity.findAll", query="SELECT e FROM EskariakEntity e"),
+	@NamedQuery(name="EskariakEntity.findIrakastrue", query="SELECT e FROM EskariakEntity e WHERE e.egoera =true AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="EskariakEntity.findIrakasfalse", query="SELECT e FROM EskariakEntity e WHERE e.egoera =false AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="EskariakEntity.findIkastrue", query="SELECT e FROM EskariakEntity e WHERE e.egoera =true AND e.ikasleak.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="EskariakEntity.findIkasfalse", query="SELECT e FROM EskariakEntity e WHERE e.egoera =false AND e.ikasleak.erabiltzaileIzena= :erabiltzaileIzena")
+	
+})
+
 public class EskariakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

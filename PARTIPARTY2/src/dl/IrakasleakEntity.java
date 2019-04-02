@@ -2,6 +2,7 @@ package dl;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 
 /**
@@ -10,7 +11,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="Irakasleak")
-@NamedQuery(name="IrakasleakEntity.findAll", query="SELECT i FROM IrakasleakEntity i")
+@NamedQueries({
+	@NamedQuery(name="IrakasleakEntity.findAll", query="SELECT i FROM IrakasleakEntity i"),
+	@NamedQuery(name="IrakasleakEntity.findKokapena", query="SELECT i FROM IrakasleakEntity i WHERE i.kokapena = :kokapena"),
+	@NamedQuery(name="IrakasleakEntity.findPrezioa", query="SELECT i FROM IrakasleakEntity i WHERE i.dirua = :dirua"),
+	@NamedQuery(name="IrakasleakEntity.findErabiltzailea", query="SELECT i FROM IrakasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena")
+})
 public class IrakasleakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,18 +30,17 @@ public class IrakasleakEntity implements Serializable {
 
 	private float dirua;
 
-	@Column(name="erabiltzaile_izena")
 	private String erabiltzaileIzena;
 
 	private String izena;
 
-	private String jaiotzedata;
+	@Temporal(TemporalType.DATE)
+	private Date jaiotzedata;
 
 	private String kokapena;
 
 	private String pasahitza;
 
-	@Column(name="telefono_zenbakia")
 	private String telefonoZenbakia;
 
 	public IrakasleakEntity() {
@@ -89,11 +94,11 @@ public class IrakasleakEntity implements Serializable {
 		this.izena = izena;
 	}
 
-	public String getJaiotzedata() {
+	public Date getJaiotzedata() {
 		return this.jaiotzedata;
 	}
 
-	public void setJaiotzedata(String jaiotzedata) {
+	public void setJaiotzedata(Date jaiotzedata) {
 		this.jaiotzedata = jaiotzedata;
 	}
 

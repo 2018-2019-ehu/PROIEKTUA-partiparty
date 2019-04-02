@@ -18,15 +18,17 @@ public class EskariakEntity implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idEskariak;
 
+	private boolean egoera;
+
 	//uni-directional many-to-one association to IkasleakEntity
 	@ManyToOne
-	@JoinColumn(name="Ikasleak_idIkasleak")
-	private IkasleakEntity IkasleakEntity;
+	@JoinColumn(name="ikaslea")
+	private IkasleakEntity ikasleak;
 
 	//uni-directional many-to-one association to KlaseakEntity
 	@ManyToOne
-	@JoinColumn(name="Klaseak_idKlaseak")
-	private KlaseakEntity KlaseakEntity;
+	@JoinColumn(name="klasea")
+	private KlaseakEntity klaseak;
 
 	public EskariakEntity() {
 	}
@@ -39,20 +41,28 @@ public class EskariakEntity implements Serializable {
 		this.idEskariak = idEskariak;
 	}
 
-	public IkasleakEntity getIkasleakEntity() {
-		return this.IkasleakEntity;
+	public boolean getEgoera() {
+		return this.egoera;
 	}
 
-	public void setIkasleakEntity(IkasleakEntity IkasleakEntity) {
-		this.IkasleakEntity = IkasleakEntity;
+	public void setEgoera(boolean egoera) {
+		this.egoera = egoera;
 	}
 
-	public KlaseakEntity getKlaseakEntity() {
-		return this.KlaseakEntity;
+	public IkasleakEntity getIkasleak() {
+		return this.ikasleak;
 	}
 
-	public void setKlaseakEntity(KlaseakEntity KlaseakEntity) {
-		this.KlaseakEntity = KlaseakEntity;
+	public void setIkasleak(IkasleakEntity ikasleak) {
+		this.ikasleak = ikasleak;
+	}
+
+	public KlaseakEntity getKlaseak() {
+		return this.klaseak;
+	}
+
+	public void setKlaseak(KlaseakEntity klaseak) {
+		this.klaseak = klaseak;
 	}
 
 }

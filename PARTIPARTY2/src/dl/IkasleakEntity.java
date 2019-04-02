@@ -2,6 +2,7 @@ package dl;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 
 /**
@@ -10,7 +11,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="Ikasleak")
-@NamedQuery(name="IkasleakEntity.findAll", query="SELECT i FROM IkasleakEntity i")
+@NamedQueries({
+	@NamedQuery(name="IkasleakEntity.findAll", query="SELECT i FROM IkasleakEntity i"),
+	@NamedQuery(name="IkasleakEntity.findErabiltzailea", query="SELECT i FROM IkasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena")
+})
+
 public class IkasleakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,12 +27,12 @@ public class IkasleakEntity implements Serializable {
 
 	private String datuak;
 
-	@Column(name="erabiltzaile_izena")
 	private String erabiltzaileIzena;
 
 	private String izena;
 
-	private String jaiotzedata;
+	@Temporal(TemporalType.DATE)
+	private Date jaiotzedata;
 
 	private String kokapena;
 
@@ -79,11 +84,11 @@ public class IkasleakEntity implements Serializable {
 		this.izena = izena;
 	}
 
-	public String getJaiotzedata() {
+	public Date getJaiotzedata() {
 		return this.jaiotzedata;
 	}
 
-	public void setJaiotzedata(String jaiotzedata) {
+	public void setJaiotzedata(Date jaiotzedata) {
 		this.jaiotzedata = jaiotzedata;
 	}
 

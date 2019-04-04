@@ -15,7 +15,8 @@ import java.util.Date;
 	@NamedQuery(name="IrakasleakEntity.findAll", query="SELECT i FROM IrakasleakEntity i"),
 	@NamedQuery(name="IrakasleakEntity.findKokapena", query="SELECT i FROM IrakasleakEntity i WHERE i.kokapena = :kokapena"),
 	@NamedQuery(name="IrakasleakEntity.findPrezioa", query="SELECT i FROM IrakasleakEntity i WHERE i.dirua = :dirua"),
-	@NamedQuery(name="IrakasleakEntity.findErabiltzailea", query="SELECT i FROM IrakasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena")
+	@NamedQuery(name="IrakasleakEntity.findErabiltzailea", query="SELECT i FROM IrakasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="IrakasleakEntity.findErabilPasahitz", query="SELECT i FROM IrakasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena AND i.pasahitza = :pasahitza")
 })
 public class IrakasleakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +46,17 @@ public class IrakasleakEntity implements Serializable {
 
 	public IrakasleakEntity() {
 	}
-
+	public IrakasleakEntity(String izena, String abizenak, String datuak, String erabiltzaileIzena, String pasahitza, float dirua, Date jaiotzedata, String kokapena, String telefonoZenbakia) {
+		this.izena=izena;
+		this.abizenak=abizenak;
+		this.datuak=datuak;
+		this.erabiltzaileIzena=erabiltzaileIzena;
+		this.pasahitza=pasahitza;
+		this.dirua=dirua;
+		this.jaiotzedata=jaiotzedata;
+		this.kokapena=kokapena;
+		this.telefonoZenbakia=telefonoZenbakia;
+	}
 	public int getIdIrakasleak() {
 		return this.idIrakasleak;
 	}

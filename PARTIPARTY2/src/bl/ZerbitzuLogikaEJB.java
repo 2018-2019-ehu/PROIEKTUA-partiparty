@@ -180,9 +180,17 @@ public class ZerbitzuLogikaEJB {
     }
     
     //LOGIN
-    public int irakasleaEgiaztatu(IrakasleakEntity irakaslea) {
+    public int irakasleaEgiaztatu(String erabiltzaileIzena, String pasahitza) {
     	int kodea=0;
-    	
+    	try {
+			@SuppressWarnings("unused")
+			IrakasleakEntity irakasDB=(IrakasleakEntity)em.createNamedQuery("IrakasleakEntity.findErabilPasahitz")
+					.setParameter("erabiltzaileIzena", erabiltzaileIzena)
+					.setParameter("pasahitza", pasahitza).getSingleResult();
+			kodea=8;
+		} catch (Exception e) {
+			kodea=9;
+		}
     	return kodea;
     }
 

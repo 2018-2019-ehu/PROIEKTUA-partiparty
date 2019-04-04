@@ -14,9 +14,48 @@
 	<ui:define name="Edukia">
 		<br/>
 		
+		<h2>IRAKASLEAK</h2>
+		
 		<h:form>
-				<h:commandButton class="button" actionListener="irakasleSarrera.xhtml" value="IRAKASLEA"/>
-				<h:commandButton class="button" actionListener="ikasleSarrera.xhtml" value="IKASLEA"/>			
+			<h:dataTable value="#{orokorrakMB.listIrakasleak}" var="irakaslea">
+				<h:column>
+					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
+					#{irakaslea.erabiltzaileIzena}
+				</h:column>			
+				<h:column>
+					<f:facet name="header">IZENA</f:facet>
+					#{irakaslea.izena}
+				</h:column>
+				<h:column>
+					<f:facet name="header">ABIZENAK</f:facet>
+					#{irakaslea.abizenak}
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+		<h:form>
+			<h:dataTable value="#{irakasleaMB}" var="irakaslea">
+				<h:column>
+					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
+					<h:inputText id="erabiltzaileIzena" value="#{irakaslea.erabiltzaileIzena}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
+					<h:message for="erabiltzaileIzena" style="color:red" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">PASAHITZA</f:facet>
+					<h:inputText id="pasahitza" value="#{irakaslea.pasahitza}" required="true" requiredMesssage="Pasahitza falta da"/>
+					<h:message for="pasahitza" style="color:red" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">EKINTZA</f:facet>
+					<h:commandButton id="login" actionListener="#{adminZerbitzuakMB.loginEgiaztatu(irakaslea)}" value="SARTU"/>
+				</h:column>
+			</h:dataTable>
+			<br/>
+			
+			
+			<h:commandButton id="erregistroa" action="irakasleErregistroa" value="ERREGISTRATU"/>
+				
 		</h:form>
 	</ui:define>
 </ui:composition>

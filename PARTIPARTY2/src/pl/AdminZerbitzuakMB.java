@@ -37,10 +37,10 @@ public class AdminZerbitzuakMB {
 				mezua="Ez dago errorerik";
 				break;
 			case 1:
-				mezua="Altan emandako produktua jadanik existitzen da";
+				mezua="Erabiltzaile izen horrekin irakasle bat existitzen da jadanik";
 				break;
 			case 2:
-				mezua="Pasahitz okerra";
+				mezua="Erabiltzailea zuzen gehitu da";
 				break;
 			case 3:
 				mezua="Erabiltzailea ez da existitzen";

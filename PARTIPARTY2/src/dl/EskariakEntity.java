@@ -12,13 +12,12 @@ import javax.persistence.*;
 @Table(name="Eskariak")
 @NamedQueries({
 	@NamedQuery(name="EskariakEntity.findAll", query="SELECT e FROM EskariakEntity e"),
-	@NamedQuery(name="EskariakEntity.findIrakastrue", query="SELECT e FROM EskariakEntity e WHERE e.egoera =true AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
-	@NamedQuery(name="EskariakEntity.findIrakasfalse", query="SELECT e FROM EskariakEntity e WHERE e.egoera =false AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
-	@NamedQuery(name="EskariakEntity.findIkastrue", query="SELECT e FROM EskariakEntity e WHERE e.egoera =true AND e.ikasleak.erabiltzaileIzena = :erabiltzaileIzena"),
-	@NamedQuery(name="EskariakEntity.findIkasfalse", query="SELECT e FROM EskariakEntity e WHERE e.egoera =false AND e.ikasleak.erabiltzaileIzena= :erabiltzaileIzena")
+	@NamedQuery(name="EskariakEntity.findIrakasonartua", query="SELECT e FROM EskariakEntity e WHERE e.egoera = 1 AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="EskariakEntity.findIrakaseskatua", query="SELECT e FROM EskariakEntity e WHERE e.egoera = 0 AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="EskariakEntity.findIkasonartua", query="SELECT e FROM EskariakEntity e WHERE e.egoera = 1 AND e.ikasleak.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="EskariakEntity.findIkaseskatua", query="SELECT e FROM EskariakEntity e WHERE e.egoera = 0 AND e.ikasleak.erabiltzaileIzena= :erabiltzaileIzena")
 	
 })
-
 public class EskariakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +25,10 @@ public class EskariakEntity implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idEskariak;
 
-	private boolean egoera;
+	//egoera=0 --> eskatua 
+	//egoera=1 --> onartua
+	//egoera=2 --> ezeztatua
+	private int egoera;
 
 	//uni-directional many-to-one association to IkasleakEntity
 	@ManyToOne
@@ -49,11 +51,11 @@ public class EskariakEntity implements Serializable {
 		this.idEskariak = idEskariak;
 	}
 
-	public boolean getEgoera() {
+	public int getEgoera() {
 		return this.egoera;
 	}
 
-	public void setEgoera(boolean egoera) {
+	public void setEgoera(int egoera) {
 		this.egoera = egoera;
 	}
 

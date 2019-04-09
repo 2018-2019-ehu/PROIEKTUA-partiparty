@@ -15,7 +15,6 @@ import java.util.Date;
 	@NamedQuery(name="IkasleakEntity.findAll", query="SELECT i FROM IkasleakEntity i"),
 	@NamedQuery(name="IkasleakEntity.findErabiltzailea", query="SELECT i FROM IkasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena")
 })
-
 public class IkasleakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

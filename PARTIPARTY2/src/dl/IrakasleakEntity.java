@@ -46,6 +46,7 @@ public class IrakasleakEntity implements Serializable {
 
 	public IrakasleakEntity() {
 	}
+
 	public IrakasleakEntity(String izena, String abizenak, String datuak, String erabiltzaileIzena, String pasahitza, float dirua, Date jaiotzedata, String kokapena, String telefonoZenbakia) {
 		this.izena=izena;
 		this.abizenak=abizenak;

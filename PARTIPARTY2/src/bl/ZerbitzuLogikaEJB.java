@@ -33,6 +33,11 @@ public class ZerbitzuLogikaEJB {
 		List<IrakasleakEntity> irakasleenZerrenda=(List<IrakasleakEntity>)em.createNamedQuery("IrakasleakEntity.findAll").getResultList();
     	return irakasleenZerrenda;
     }
+    public List<IrakasleakEntity> getIrakasleaBatEntity(){
+    	@SuppressWarnings("unchecked")
+		List<IrakasleakEntity> irakaslearenZerrenda=(List<IrakasleakEntity>)em.createNamedQuery("IrakasleakEntity.findErabiltzailea").getResultList();
+    	return irakaslearenZerrenda;
+    }
     public int addIrakasleaEntity(IrakasleakEntity irakaslea) {
     	int kodea=0;
     	try {

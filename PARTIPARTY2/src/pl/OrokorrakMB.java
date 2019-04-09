@@ -16,8 +16,13 @@ public class OrokorrakMB {
 	private ZerbitzuLogikaEJB zerbitzuLogikaEJB;
 	
 	public List<IrakasleakEntity> getListIrakasleak(){
-		List<IrakasleakEntity> produktuenZerrenda;
-		produktuenZerrenda=zerbitzuLogikaEJB.getIrakasleakEntity();
-		return produktuenZerrenda;
+		List<IrakasleakEntity> irakasleenZerrenda;
+		irakasleenZerrenda=zerbitzuLogikaEJB.getIrakasleakEntity();
+		return irakasleenZerrenda;
+	}
+	public List<IrakasleakEntity> getListIrakasleBat(){
+		List<IrakasleakEntity> irakasleBatZerrenda;
+		irakasleBatZerrenda=zerbitzuLogikaEJB.getIrakasleaBatEntity();
+		return irakasleBatZerrenda;
 	}
 }

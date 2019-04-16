@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+
+	<ui:define name="Izenburua">PARTIPARTY</ui:define>
+	<ui:define name="OrrialdearenHasiera">
+		<h1>Ongi etorri zure profilera</h1>
+	</ui:define>
+	
+	<ui:define name="Edukia">
+		<br/>
+				
+		<h3>Sartu nahi dituzun datu berriak</h3>
+		<br/>
+		<form >
+			<h:dataTable value="#{irakasleaMB}" var="irakaslea">
+				<h:column>
+					<f:facet name="header">DATU BERRIAK</f:facet>
+					<h:inputText id="datuak" value="#{irakaslea.datuak}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">EKINTZA</f:facet>
+					<h:commandButton actionListener="#{adminZerbitzuakMB.irakaslearenDatuakAldatu(irakaslea)}" action="/irakaslearenProfila" value="DATUAK ALDATU" />
+				</h:column>
+			</h:dataTable>
+		</form>
+		
+		
+	</ui:define>
+</ui:composition>
+</html>

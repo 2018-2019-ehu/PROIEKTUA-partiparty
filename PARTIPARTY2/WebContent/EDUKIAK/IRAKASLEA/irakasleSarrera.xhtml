@@ -53,13 +53,12 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="login" actionListener="#{adminZerbitzuakMB.loginEgiaztatu(irakaslea)}" value="SARTU"/>
+					<h:commandButton id="login"  actionListener="#{adminZerbitzuakMB.loginEgiaztatu(irakaslea)}"  action="irakaslearenProfila"  value="SARTU"/>
 				</h:column>
 			</h:dataTable>
 			<br/>
 			
-			
-			<h:commandButton id="erregistroa" action="irakasleErregistroa" value="ERREGISTRATU"/>
+			<h:commandButton id="erregistroa" action="/irakasleErregistroa" value="ERREGISTRATU"/>
 				
 		</h:form>
 		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==1}">

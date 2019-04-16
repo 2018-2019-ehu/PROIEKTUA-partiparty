@@ -1,23 +1,38 @@
 package pl;
 
+import java.io.Serializable;
+
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import bl.ZerbitzuLogikaEJB;
 import dl.IrakasleakEntity;
 
 @Named
-@RequestScoped
-public class AdminZerbitzuakMB {
+@SessionScoped
+public class AdminZerbitzuakMB implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@EJB
 	private ZerbitzuLogikaEJB zle;
-	int kodea;
+	private int kodea;
+	private IrakasleakEntity irakasleLogin=new IrakasleakEntity();
 	
 	public void loginEgiaztatu(IrakasleaMB irakaslea) {
+		System.out.println("Hola");
 		kodea=zle.irakasleaEgiaztatu(irakaslea.getErabiltzaileIzena(), irakaslea.getPasahitza());
+		System.out.println("Kodea= "+kodea);
+		if(kodea==8) {
+			irakasleLogin=(IrakasleakEntity)zle.getIrakasleBakarra(irakaslea.getErabiltzaileIzena());
+			
+		}
+		System.out.println(irakasleLogin.getErabiltzaileIzena());
 	}
+	
 	public void irakasleaGehitu(IrakasleaMB irakaslea) {
 		IrakasleakEntity irakasDB=new IrakasleakEntity(irakaslea.getIzena(),irakaslea.getAbizenak(), 
 				irakaslea.getDatuak(), irakaslea.getErabiltzaileIzena(), irakaslea.getPasahitza(), 
@@ -26,7 +41,13 @@ public class AdminZerbitzuakMB {
 		kodea=zle.addIrakasleaEntity(irakasDB);
 		
 	}
-	
+	public void irakaslearenDatuakAldatu(IrakasleaMB irakaslea) {
+		irakasleLogin=(IrakasleakEntity)zle.
+				irakasleDatuakAldatu(irakasleLogin.getErabiltzaileIzena(), irakaslea.getDatuak());
+	}
+	public IrakasleakEntity irakaslearenProfila() {
+		return irakasleLogin;
+	}
 	public int getKodea(){
 		return kodea;
 	}

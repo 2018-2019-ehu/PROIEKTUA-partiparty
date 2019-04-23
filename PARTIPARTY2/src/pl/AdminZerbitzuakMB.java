@@ -42,12 +42,16 @@ public class AdminZerbitzuakMB implements Serializable{
 		
 	}
 	public void irakaslearenDatuakAldatu(IrakasleaMB irakaslea) {
-		irakasleLogin=(IrakasleakEntity)zle.
-				irakasleDatuakAldatu(irakasleLogin.getErabiltzaileIzena(), irakaslea.getDatuak());
+		System.out.println("Datu"+irakaslea.getDatuak());
+
+		irakasleLogin.setDatuak(irakaslea.getDatuak());
+		System.out.println("Dat"+irakasleLogin.getDatuak());
+		zle.irakasleDatuakAldatu(irakasleLogin.getErabiltzaileIzena(), irakasleLogin.getDatuak());	
 	}
 	public IrakasleakEntity irakaslearenProfila() {
 		return irakasleLogin;
 	}
+	
 	public int getKodea(){
 		return kodea;
 	}

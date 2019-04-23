@@ -66,12 +66,12 @@ public class ZerbitzuLogikaEJB {
 		return kodea;
 	}
     
-    public IrakasleakEntity  irakasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
+    public void  irakasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
+    	System.out.print("Datuak"+datuak);
     	IrakasleakEntity irakasDB=(IrakasleakEntity)em.
-    			createNamedQuery("IrakasleakEntity.finsErabiltzailea").
+    			createNamedQuery("IrakasleakEntity.findErabiltzailea").
     			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
     	irakasDB.setDatuak(datuak);
-    	return irakasDB;
     }
     
   //IKASLEAK

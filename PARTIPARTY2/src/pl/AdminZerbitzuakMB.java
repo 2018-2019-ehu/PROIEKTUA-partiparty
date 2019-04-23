@@ -65,7 +65,7 @@ public class AdminZerbitzuakMB implements Serializable{
 				mezua="Erabiltzaile izen horrekin irakasle bat existitzen da jadanik";
 				break;
 			case 2:
-				mezua="Erabiltzailea zuzen gehitu da";
+				mezua="Erabiltzailea zuzen gehitu da datubasera";
 				break;
 			case 3:
 				mezua="Erabiltzailea ez da existitzen";

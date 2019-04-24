@@ -14,10 +14,49 @@
 	<ui:define name="Edukia">
 		<br/>
 		
+		<h2>IKASLEAK</h2>
+		
 		<h:form>
-				<h:commandButton class="button" actionListener="irakasleSarrera.xhtml" value="IRAKASLEA"/>
-				<h:commandButton class="button" actionListener="ikasleSarrera.xhtml" value="IKASLEA"/>			
+			<h:dataTable value="#{orokorrakMB.listIkasleak}" var="ikaslea">
+				<h:column>
+					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
+					#{ikaslea.erabiltzaileIzena}
+				</h:column>			
+				<h:column>
+					<f:facet name="header">IZENA</f:facet>
+					#{ikaslea.izena}
+				</h:column>
+				<h:column>
+					<f:facet name="header">ABIZENAK</f:facet>
+					#{ikaslea.abizenak}
+				</h:column>
+				
+			</h:dataTable>
 		</h:form>
+		
+		<h:form>
+			<h:dataTable value="#{ikasleaMB}" var="ikaslea">
+				<h:column>
+					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
+					<h:inputText id="erabiltzaileIzena" value="#{ikaslea.erabiltzaileIzena}" />
+				
+				</h:column>
+				<h:column>
+					<f:facet name="header">PASAHITZA</f:facet>
+					<h:inputText id="pasahitza" value="#{ikaslea.pasahitza}" />
+					
+				</h:column>
+				<h:column>
+					<f:facet name="header">EKINTZA</f:facet>
+					<h:commandButton id="login"  actionListener="#{ikasleZerbitzuakMB.loginEgiaztatu(ikaslea)}"  action="ikaslearenProfila"  value="SARTU"/>
+				</h:column>
+			</h:dataTable>
+			<br/>
+			
+			<h:commandButton id="erregistroa" action="ikasleErregistroa" value="ERREGISTRATU"/>
+				
+		</h:form>
+		
 	</ui:define>
 </ui:composition>
 </html>

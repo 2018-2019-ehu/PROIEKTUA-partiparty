@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+
+	<ui:define name="Izenburua">PARTIPARTY</ui:define>
+	<ui:define name="OrrialdearenHasiera">
+		<h1>Erregistroa</h1>
+	</ui:define>
+	
+	<ui:define name="Edukia">
+		<br/>
+		
+		<h2>Sar itzazu zure datuak erregistroa betetzeko</h2>
+		
+		<h:form>
+			
+			
+			
+		IZENA:	<h:inputText id="izena" value="#{ikasleaMB.izena}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
+			<h:message for="izena" style="color:red" />
+			
+			<br/>
+		ABIZENAK:	<h:inputText id="abizenak" value="#{ikasleaMB.abizenak}" required="true" requiredMesssage="Pasahitza falta da"/>
+			<h:message for="abizenak" style="color:red" />
+			<br/>
+			
+		ERABILTZAILE IZENA:	<h:inputText id="erabiltzaileIzena" value="#{ikasleaMB.erabiltzaileIzena}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
+			<h:message for="erabiltzaileIzena" style="color:red" />
+			<br/>	
+			
+		PASAHITZA:	<h:inputText id="pasahitza" value="#{ikasleaMB.pasahitza}" required="true" requiredMesssage="Pasahitza falta da"/>
+			<h:message for="pasahitza" style="color:red" />
+			<br/>
+			
+		DATUAK:	<h:inputText id="datuak" value="#{ikasleaMB.datuak}" />
+			<br/>
+			
+			
+		JAIOTZE DATA:	<h:inputText id="jaiotzedata" value="#{ikasleaMB.jaiotzedata}" required="true" requiredMesssage=" Erabiltzaile izena falta da">
+				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
+			</h:inputText>
+			<h:message for="jaiotzedata" style="color:red" />
+			<br/>
+			
+		KOKAPENA:	<h:inputText id="kokapena" value="#{ikasleaMB.kokapena}" required="true" requiredMesssage="Pasahitza falta da"/>
+			<h:message for="kokapena" style="color:red" />
+			<br/>
+			
+		TELEFONO ZENBAKIA:	<h:inputText id="telefonoZenbakia" value="#{ikasleaMB.telefonoZenbakia}" required="true" requiredMesssage="Pasahitza falta da"/>
+			<h:message for="telefonoZenbakia" style="color:red" />
+			<br/>
+			
+			<h:commandButton id="erregistroa" actionListener="#{ikasleZerbitzuakMB.ikasleaGehitu(ikasleaMB)}" action="ikasleSarrera" value="ERREGISTRATU"/>
+			
+			<br/>
+			
+				
+			<br/><br/>
+			
+		</h:form>
+		<h:form>
+			<h:commandButton id="logineraBueltatu" action="irakasleSarrera" value="LOGINERA BUELTATU"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

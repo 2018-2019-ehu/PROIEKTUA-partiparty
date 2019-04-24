@@ -8,7 +8,7 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Datuak aldatu</h1>
+		<h1>Kokapena aldatu</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
@@ -60,13 +60,13 @@
 			<h:form>
 			<h:dataTable value="#{irakasleaMB}" var="irakaslea">
 				<h:column>
-					<f:facet name="header">DATU BERRIAK</f:facet>
-					<h:inputText id="datuak" value="#{irakaslea.datuak}" />
+					<f:facet name="header">KOKAPEN BERRIA</f:facet>
+					<h:inputText id="kokapena" value="#{irakaslea.kokapena}" />
 				
 				</h:column>
 				<h:column>
 					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="dat"  actionListener="#{adminZerbitzuakMB.irakaslearenDatuakAldatu(irakaslea)}"  action="irakaslearenProfila"  value="GORDE"/>
+					<h:commandButton id="kok"  actionListener="#{adminZerbitzuakMB.irakaslearenKokapenaAldatu(irakaslea)}"  action="irakaslearenProfila"  value="GORDE"/>
 				</h:column>
 			</h:dataTable>
 			<br/>

@@ -12,6 +12,8 @@ import dl.IkasgaiakEntity;
 import dl.IkasleakEntity;
 import dl.IrakasleakEntity;
 import dl.KlaseakEntity;
+import dl.MailakEntity;
+import dl.OrdutegiakEntity;
 
 /**
  * Session Bean implementation class ZerbitzuLogikaEJB
@@ -67,12 +69,33 @@ public class ZerbitzuLogikaEJB {
 	}
     
     public void  irakasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
-    	System.out.print("Datuak"+datuak);
+    	
     	IrakasleakEntity irakasDB=(IrakasleakEntity)em.
     			createNamedQuery("IrakasleakEntity.findErabiltzailea").
     			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
     	irakasDB.setDatuak(datuak);
     }
+    public void  irakaslePasahitzaAldatu(String erabiltzaileIzena, String pasahitza) {
+    	
+    	IrakasleakEntity irakasDB=(IrakasleakEntity)em.
+    			createNamedQuery("IrakasleakEntity.findErabiltzailea").
+    			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+    	irakasDB.setPasahitza(pasahitza);
+    }
+	public void  irakasleKokapenaAldatu(String erabiltzaileIzena, String kokapena) {
+	
+	IrakasleakEntity irakasDB=(IrakasleakEntity)em.
+			createNamedQuery("IrakasleakEntity.findErabiltzailea").
+			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+	irakasDB.setKokapena(kokapena);
+	}
+	public void  irakasleTelefonoaAldatu(String erabiltzaileIzena, String telefonoa) {
+	
+	IrakasleakEntity irakasDB=(IrakasleakEntity)em.
+			createNamedQuery("IrakasleakEntity.findErabiltzailea").
+			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+	irakasDB.setTelefonoZenbakia(telefonoa);
+	}
     
   //IKASLEAK
     public List<IkasleakEntity> getIkasleakEntity(){
@@ -80,6 +103,12 @@ public class ZerbitzuLogikaEJB {
 		List<IkasleakEntity> ikasleenZerrenda=(List<IkasleakEntity>)em.
 		createNamedQuery("IkasleakEntity.findAll").getResultList();
     	return ikasleenZerrenda;
+    }
+    public IkasleakEntity getIkasleBakarra(String erabIzena) {
+    	IkasleakEntity ikas=(IkasleakEntity)em.
+    			createNamedQuery("IkasleakEntity.findErabiltzailea").
+    			setParameter("erabiltzaileIzena", erabIzena).getSingleResult();
+    	return ikas;
     }
     public int addIkasleaEntity(IkasleakEntity ikaslea) {
     	int kodea=0;
@@ -143,12 +172,32 @@ public class ZerbitzuLogikaEJB {
 		createNamedQuery("KlaseakEntity.findAll").getResultList();
     	return klaseenZerrenda;
     }
-    public int addKlaseaEntity(KlaseakEntity klasea, String erabiltzaileIzena) {
+    public List<KlaseakEntity> getIrakasleBatenKlaseak(String erabiltzaileIzena){
+    	@SuppressWarnings("unused")
+		IrakasleakEntity irak=(IrakasleakEntity)em.
+    			createNamedQuery("IrakasleakEntity.findErabiltzailea").
+    			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+    
+    	@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klaseakDB=(List<KlaseakEntity>)em.
+    			createNamedQuery("KlaseakEntity.findErabiltzailea").
+    			setParameter("erabiltzaileIzena", erabiltzaileIzena).getResultList();
+    	
+    	return klaseakDB;
+    }
+    public int addKlaseaEntity(String erabiltzaileIzena, int idIkasgaia, int idMaila, int idOrdutegia) {
     	int kodea=0;
+    	KlaseakEntity klasea=new KlaseakEntity();
 		IrakasleakEntity irakaslea=(IrakasleakEntity)em.
 				createNamedQuery("IrakasleakEntity.findErabiltzailea").
 				setParameter("erabiltzaileIzena",erabiltzaileIzena).getSingleResult();
+		IkasgaiakEntity ikas=(IkasgaiakEntity)em.find(IkasgaiakEntity.class, idIkasgaia);
+		MailakEntity maila=(MailakEntity)em.find(MailakEntity.class, idMaila);
+		OrdutegiakEntity ordu= (OrdutegiakEntity)em.find(OrdutegiakEntity.class, idOrdutegia);
     	klasea.setIrakasleak(irakaslea);
+    	klasea.setIkasgaiak(ikas);
+    	klasea.setMailak(maila);
+    	klasea.setOrdutegiak(ordu);
     	em.persist(klasea);
     	kodea=4;
     	return kodea;
@@ -162,6 +211,21 @@ public class ZerbitzuLogikaEJB {
     	}
     	return kodea;
     }
+    //MAILAK
+    public List<MailakEntity> getMailakEntity(){
+    	@SuppressWarnings("unchecked")
+		List<MailakEntity> mailenZerrenda=(List<MailakEntity>)em.
+		createNamedQuery("MailakEntity.findAll").getResultList();
+    	return mailenZerrenda;
+    }
+    
+    //ORDUTEGIAK
+    public List<OrdutegiakEntity> getOrdutegiakEntity(){
+    	@SuppressWarnings("unchecked")
+		List<OrdutegiakEntity> ordutegienZerrenda=(List<OrdutegiakEntity>)em.
+		createNamedQuery("OrdutegiakEntity.findAll").getResultList();
+    	return ordutegienZerrenda;
+    }
     
     //ESKARIAK
     public List<EskariakEntity> getEskariakEntity(){
@@ -173,28 +237,28 @@ public class ZerbitzuLogikaEJB {
     public List<EskariakEntity> getIrakasleenEskariOnartuak(String erabiltzaileIzena){
     	@SuppressWarnings("unchecked")
 		List<EskariakEntity> zerrenda=(List<EskariakEntity>)em.
-		createNamedQuery("EskariakEntity.findIrakastrue").
+		createNamedQuery("EskariakEntity.findIrakasOnartua").
 		setParameter("erabiltzaileIzena", erabiltzaileIzena).getResultList();
     	return zerrenda;
     }
-    public List<EskariakEntity> getIrakasleenEskariEzeztatuak(String erabiltzaileIzena){
+    public List<EskariakEntity> getIrakasleenEskariEskatuak(String erabiltzaileIzena){
     	@SuppressWarnings("unchecked")
 		List<EskariakEntity> zerrenda=(List<EskariakEntity>)em.
-		createNamedQuery("EskariakEntity.findIrakasfalse").
+		createNamedQuery("EskariakEntity.findIrakasEskatua").
 		setParameter("erabiltzaileIzena", erabiltzaileIzena).getResultList();
     	return zerrenda;
     }
     public List<EskariakEntity> getIkasleenEskariOnartuak(String erabiltzaileIzena){
     	@SuppressWarnings("unchecked")
 		List<EskariakEntity> zerrenda=(List<EskariakEntity>)em.
-		createNamedQuery("EskariakEntity.findIkastrue").
+		createNamedQuery("EskariakEntity.findIkasOnartua").
 		setParameter("erabiltzaileIzena", erabiltzaileIzena).getResultList();
     	return zerrenda;
     }
-    public List<EskariakEntity> getIkasleenEskariEzeztatuak(String erabiltzaileIzena){
+    public List<EskariakEntity> getIkasleenEskariEskatuak(String erabiltzaileIzena){
     	@SuppressWarnings("unchecked")
 		List<EskariakEntity> zerrenda=(List<EskariakEntity>)em.
-		createNamedQuery("EskariakEntity.findIkasfalse").
+		createNamedQuery("EskariakEntity.findIkasEskatua").
 		setParameter("erabiltzaileIzena", erabiltzaileIzena).getResultList();
     	return zerrenda;
     }
@@ -207,6 +271,11 @@ public class ZerbitzuLogikaEJB {
     	em.persist(eskaria);
     	kodea=6;
     	return kodea;
+    }
+    public void eskariaOnartu(int idEskaria) {
+    	EskariakEntity esk=em.find(EskariakEntity.class, idEskaria);
+    	int i=1;
+    	esk.setEgoera(i);
     }
     public int removeEskariaEntity(int idEskariak) {
     	int kodea=0;
@@ -225,6 +294,20 @@ public class ZerbitzuLogikaEJB {
 			@SuppressWarnings("unused")
 			IrakasleakEntity irakasDB=(IrakasleakEntity)em.
 					createNamedQuery("IrakasleakEntity.findErabilPasahitz")
+					.setParameter("erabiltzaileIzena", erabiltzaileIzena)
+					.setParameter("pasahitza", pasahitza).getSingleResult();
+			kodea=8;
+		} catch (Exception e) {
+			kodea=9;
+		}
+    	return kodea;
+    }
+    public int ikasleaEgiaztatu(String erabiltzaileIzena, String pasahitza) {
+    	int kodea=0;
+    	try {
+			@SuppressWarnings("unused")
+			IkasleakEntity irakasDB=(IkasleakEntity)em.
+					createNamedQuery("IkasleakEntity.findErabilPasahitz")
 					.setParameter("erabiltzaileIzena", erabiltzaileIzena)
 					.setParameter("pasahitza", pasahitza).getSingleResult();
 			kodea=8;

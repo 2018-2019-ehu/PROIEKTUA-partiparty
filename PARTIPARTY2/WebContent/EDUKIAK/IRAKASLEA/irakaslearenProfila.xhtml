@@ -29,6 +29,7 @@
 					<h:column>
 						<f:facet name="header">DATUAK</f:facet>
 						#{i.datuak}
+						
 					</h:column>
 					<h:column>
 						<f:facet name="header">ERABILTZAILE IZENA</f:facet>
@@ -37,7 +38,7 @@
 					<h:column>
 						<f:facet name="header">PASAHITZA</f:facet>
 						#{i.pasahitza}
-						<h:commandButton value="PASAHITZA ALDATU" />
+						
 					</h:column>
 					<h:column>
 						<f:facet name="header">JAIOTZA DATA</f:facet>
@@ -48,12 +49,12 @@
 					<h:column>
 						<f:facet name="header">KOKAPENA</f:facet>
 						#{i.kokapena}
-						<h:commandButton  value="KOKAPENA ALDATU" />
+						
 					</h:column>
 					<h:column>
 						<f:facet name="header">TELEFONO ZENBAKIA</f:facet>
 						#{i.telefonoZenbakia}
-						<h:commandButton  value="TELEFONO ZENBAKIA ALDATU" />
+						
 					</h:column>
 					
 				</h:dataTable>
@@ -61,10 +62,113 @@
 			<br/>
 			<h:form>
 				<h:commandButton id="datuak" action="irakasleaDatuakAldatu" value="DATUAK ALDATU" />
-			
+				<br/><br/>
+				<h:commandButton id="pas" action="irakasleaPasahitzaAldatu" value="PASAHITZA ALDATU" />
+				<br/><br/>
+				<h:commandButton id="kok" action="irakasleaKokapenaAldatu" value="KOKAPENA ALDATU" />
+				<br/><br/>
+				<h:commandButton id="tel" action="irakasleaTelefonoaAldatu" value="TELEFONO ZENBAKIA ALDATU" />
 			</h:form>
-		
-		
+			
+			<h2>NIRE KLASEAK</h2>
+			<h:form>
+				<h:dataTable value="#{adminZerbitzuakMB.listKlaseak}" var="i">
+					<h:column>
+						<f:facet name="header">IKASGAIA</f:facet>
+						#{i.ikasgaiak.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">PREZIOA</f:facet>
+						#{i.irakasleak.dirua}
+					</h:column>		
+					<h:column>
+						<f:facet name="header">ORDUTEGIA</f:facet>
+						#{i.ordutegiak.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">MAILA</f:facet>
+						#{i.mailak.izena}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">EKINTZA</f:facet>
+						<h:commandButton action="#{adminZerbitzuakMB.klaseaEzabatu(i.idKlaseak)}" value="EZABATU" />
+					</h:column>	
+					
+				</h:dataTable>
+				<br/><br/>
+				<h:commandButton action="klaseBatGehitu" value="KLASE BAT GEHITU" />
+			</h:form>
+			<br/><br/>
+			<h2>ONARTUTAKO ESKAERAK</h2>
+			<h:form>
+				<h:dataTable value="#{adminZerbitzuakMB.listEskariOnartuak}" var="onar">
+					<h:column>
+						<f:facet name="header">IKASGAIA</f:facet>
+						#{onar.ikasgaia}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">IKASLEA</f:facet>
+						#{onar.ikaslea}
+					</h:column>	
+							
+					<h:column>
+						<f:facet name="header">PREZIOA</f:facet>
+						#{onar.prezioa}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">ORDUTEGIA</f:facet>
+						#{onar.ordutegia}
+					</h:column>
+					<h:column>
+						<f:facet name="header">MAILA</f:facet>
+						#{onar.maila}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">EKINTZA</f:facet>
+						<h:commandButton action="#{adminZerbitzuakMB.eskariaEzeztatu(onar.id)}" value="EZEZTATU" />
+					</h:column>	
+					
+				</h:dataTable>
+			</h:form>
+			<br/><br/>
+			<h2>ONARTU GABEKO ESKAERAK</h2>
+			<h:form>
+				<h:dataTable value="#{adminZerbitzuakMB.listEskariEskatuak}" var="esk">
+					<h:column>
+						<f:facet name="header">IKASGAIA</f:facet>
+						#{esk.ikasgaia}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">IKASLEA</f:facet>
+						#{esk.ikaslea}
+					</h:column>	
+							
+					<h:column>
+						<f:facet name="header">PREZIOA</f:facet>
+						#{esk.prezioa}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">ORDUTEGIA</f:facet>
+						#{esk.ordutegia}
+					</h:column>
+					<h:column>
+						<f:facet name="header">MAILA</f:facet>
+						#{esk.maila}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">EKINTZA</f:facet>
+						<h:commandButton action="#{adminZerbitzuakMB.eskariaOnartu(esk.id)}" value="ONARTU" />
+						<h:commandButton action="#{adminZerbitzuakMB.eskariaEzeztatu(esk.id)}" value="EZEZTATU" />
+					</h:column>	
+					
+				</h:dataTable>
+			</h:form>
 	</ui:define>
 </ui:composition>
 </html>

@@ -7,7 +7,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 import bl.ZerbitzuLogikaEJB;
+import dl.IkasleakEntity;
 import dl.IrakasleakEntity;
+
 
 @ApplicationScoped
 @Named
@@ -18,14 +20,20 @@ public class OrokorrakMB {
 	private String erabIzena;
 	
 	public List<IrakasleakEntity> getListIrakasleak(){
-		List<IrakasleakEntity> produktuenZerrenda;
-		produktuenZerrenda=zerbitzuLogikaEJB.getIrakasleakEntity();
-		return produktuenZerrenda;
+		List<IrakasleakEntity> irakasleenZerrenda;
+		irakasleenZerrenda=zerbitzuLogikaEJB.getIrakasleakEntity();
+		return irakasleenZerrenda;
+	}
+	public List<IkasleakEntity> getListIkasleak(){
+		List<IkasleakEntity> ikasleenZerrenda;
+		ikasleenZerrenda=zerbitzuLogikaEJB.getIkasleakEntity();
+		return ikasleenZerrenda;
 	}
 	public IrakasleakEntity irakaslearenDatuak() {
 		IrakasleakEntity irakas=(IrakasleakEntity)zerbitzuLogikaEJB.getIrakasleBakarra(erabIzena);
 		return irakas;
 	}
+	
 	public String getErabIzena() {
 		return erabIzena;
 	}

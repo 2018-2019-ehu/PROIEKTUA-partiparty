@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Table(name="Klaseak")
 @NamedQueries({
 	@NamedQuery(name="KlaseakEntity.findAll", query="SELECT k FROM KlaseakEntity k"),
+	@NamedQuery(name="KlaseakEntity.findErabiltzailea", query="SELECT k FROM KlaseakEntity k WHERE k.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
 	@NamedQuery(name="KlaseakEntity.findIkasgaia", query="SELECT k FROM KlaseakEntity k WHERE k.ikasgaiak.idIkasgaiak = :idIkasgaiak"),
 	@NamedQuery(name="KlaseakEntity.findMaila", query="SELECT k FROM KlaseakEntity k WHERE k.mailak.idMailak = :idMailak")
 })

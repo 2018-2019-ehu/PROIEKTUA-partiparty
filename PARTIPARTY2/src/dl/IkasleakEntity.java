@@ -13,7 +13,8 @@ import java.util.Date;
 @Table(name="Ikasleak")
 @NamedQueries({
 	@NamedQuery(name="IkasleakEntity.findAll", query="SELECT i FROM IkasleakEntity i"),
-	@NamedQuery(name="IkasleakEntity.findErabiltzailea", query="SELECT i FROM IkasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena")
+	@NamedQuery(name="IkasleakEntity.findErabiltzailea", query="SELECT i FROM IkasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="IkasleakEntity.findErabilPasahitz", query="SELECT i FROM IkasleakEntity i WHERE i.erabiltzaileIzena = :erabiltzaileIzena AND i.pasahitza = :pasahitza")
 })
 public class IkasleakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +43,17 @@ public class IkasleakEntity implements Serializable {
 
 	public IkasleakEntity() {
 	}
-
+	public IkasleakEntity(String izena, String abizenak, String datuak, String erabiltzaileIzena, String pasahitza, Date jaiotzedata, String kokapena, String telefonoZenbakia) {
+		this.izena=izena;
+		this.abizenak=abizenak;
+		this.datuak=datuak;
+		this.erabiltzaileIzena=erabiltzaileIzena;
+		this.pasahitza=pasahitza;
+		this.jaiotzedata=jaiotzedata;
+		this.kokapena=kokapena;
+		this.telefonoZenbakia=telefonoZenbakia;
+	}
+	
 	public int getIdIkasleak() {
 		return this.idIkasleak;
 	}

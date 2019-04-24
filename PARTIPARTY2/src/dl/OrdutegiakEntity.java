@@ -18,9 +18,7 @@ public class OrdutegiakEntity implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idOrdutegia;
 
-	private int denboratartea;
-
-	private int eguna;
+	private String izena;
 
 	public OrdutegiakEntity() {
 	}
@@ -33,20 +31,12 @@ public class OrdutegiakEntity implements Serializable {
 		this.idOrdutegia = idOrdutegia;
 	}
 
-	public int getDenboratartea() {
-		return this.denboratartea;
+	public String getIzena() {
+		return this.izena;
 	}
 
-	public void setDenboratartea(int denboratartea) {
-		this.denboratartea = denboratartea;
-	}
-
-	public int getEguna() {
-		return this.eguna;
-	}
-
-	public void setEguna(int eguna) {
-		this.eguna = eguna;
+	public void setIzena(String izena) {
+		this.izena = izena;
 	}
 
 }

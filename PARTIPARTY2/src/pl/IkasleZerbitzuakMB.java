@@ -9,9 +9,11 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import bl.ZerbitzuLogikaEJB;
-
+import dl.EskariakEntity;
 import dl.IkasleakEntity;
 import dl.IrakasleakEntity;
+import dl.KlaseakEntity;
+
 
 
 @Named
@@ -26,6 +28,8 @@ public class IkasleZerbitzuakMB implements Serializable{
 	private ZerbitzuLogikaEJB zle;
 	private int kodea;
 	private IkasleakEntity ikasleLogin=new IkasleakEntity();
+	private IrakasleakEntity irakaslea=new IrakasleakEntity();
+	private List<KlaseakEntity> listKlase=new ArrayList<KlaseakEntity>();
 	
 	public void loginEgiaztatu(IkasleaMB ikaslea) {
 		System.out.println("Hola");
@@ -45,6 +49,157 @@ public class IkasleZerbitzuakMB implements Serializable{
 				ikaslea.getTelefonoZenbakia());
 		kodea=zle.addIkasleaEntity(ikasDB);
 		
+	}
+	
+	public IkasleakEntity ikaslearenProfila() {
+		return ikasleLogin;
+	}
+	
+	public void ikaslearenDatuakAldatu(IkasleaMB ikaslea) {
+
+		ikasleLogin.setDatuak(ikaslea.getDatuak());
+		zle.ikasleDatuakAldatu(ikasleLogin.getErabiltzaileIzena(), ikasleLogin.getDatuak());	
+	}
+	public void ikaslearenPasahitzaAldatu(IkasleaMB ikaslea) {
+
+		ikasleLogin.setPasahitza(ikaslea.getPasahitza());
+		zle.ikaslePasahitzaAldatu(ikasleLogin.getErabiltzaileIzena(), ikasleLogin.getPasahitza());	
+	}
+	public void ikaslearenKokapenaAldatu(IkasleaMB ikaslea) {
+
+		ikasleLogin.setKokapena(ikaslea.getKokapena());
+		zle.ikasleKokapenaAldatu(ikasleLogin.getErabiltzaileIzena(), ikasleLogin.getKokapena());	
+	}
+	public void ikaslearenTelefonoaAldatu(IkasleaMB ikaslea) {
+
+		ikasleLogin.setTelefonoZenbakia(ikaslea.getTelefonoZenbakia());
+		zle.ikasleTelefonoaAldatu(ikasleLogin.getErabiltzaileIzena(), ikasleLogin.getTelefonoZenbakia());	
+	}
+	
+	public List<EskariakEntity> getListEskariOnartuak(){
+		//List<EskariakMB> eskariak;
+		//eskariak=new ArrayList<EskariakMB>();
+		List<EskariakEntity> eskariList=(List<EskariakEntity>)zle.getIkasleenEskariOnartuak(ikasleLogin.getErabiltzaileIzena());
+		/*EskariakEntity esk;
+		EskariakMB aux=new EskariakMB();
+		for(int i=0;i<eskariList.size();i++) {
+			esk=eskariList.get(i);
+			aux.setId(esk.getIdEskariak());
+			aux.setIkasgaia(esk.getKlaseak().getIkasgaiak().getIzena());
+			aux.setIkaslea(esk.getIkasleak().getErabiltzaileIzena());
+			aux.setPrezioa(esk.getKlaseak().getIrakasleak().getDirua());
+			aux.setOrdutegia(esk.getKlaseak().getOrdutegiak().getIzena());
+			aux.setMaila(esk.getKlaseak().getMailak().getIzena());
+			eskariak.add(i, aux);
+		}*/
+		return eskariList;
+	}
+	public List<EskariakEntity> getListEskariEskatuak(){
+		//List<EskariakMB> eskariak=new ArrayList<EskariakMB>();
+		List<EskariakEntity> eskariList=(List<EskariakEntity>)zle.getIkasleenEskariEskatuak(ikasleLogin.getErabiltzaileIzena());
+		/*EskariakEntity esk;
+		EskariakMB aux=new EskariakMB();
+		for(int i=0;i<eskariList.size();i++) {
+			esk=eskariList.get(i);
+			aux.setId(esk.getIdEskariak());
+			aux.setIkasgaia(esk.getKlaseak().getIkasgaiak().getIzena());
+			aux.setIkaslea(esk.getIkasleak().getErabiltzaileIzena());
+			aux.setPrezioa(esk.getKlaseak().getIrakasleak().getDirua());
+			aux.setOrdutegia(esk.getKlaseak().getOrdutegiak().getIzena());
+			aux.setMaila(esk.getKlaseak().getMailak().getIzena());
+			eskariak.add(i, aux);
+		}*/
+		return eskariList;
+	}
+	public void eskariaOnartu(int idEskaria) {
+		zle.eskariaOnartu(idEskaria);
+	}
+	public void eskariaEzeztatu(int idEskaria) {
+		zle.removeEskariaEntity(idEskaria);
+	}
+	
+	public List<KlaseakEntity> iragazkienEmaitzak(){
+		return listKlase;
+	}
+	public void klaseIragazkiak(IragazkiakMB ira) {
+		if(ira.getKokapena().isEmpty()) {
+			System.out.println(ira.getKokapena()+"kokap");
+		}
+			
+	
+		if((ira.getIkasgaia().getIdIkasgaiak())==1) {
+			if((ira.getMaila().getIdMailak())==1) {
+				if((ira.getKokapena()).isEmpty()) {
+					System.out.println(ira.getKokapena()+"kok");
+					listKlase=zle.getKlaseakEntity();
+				}
+				else {
+					listKlase=zle.getKok(ira.getKokapena());
+					if(listKlase.size()==0) {
+						kodea=15;
+					}
+				}
+			}else {
+				if((ira.getKokapena()).isEmpty()) {
+					listKlase=zle.getMaila(ira.getMaila().getIdMailak());
+					if(listKlase.size()==0) {
+						kodea=15;
+					}
+					
+				}
+				else {
+					listKlase=zle.getKokMaila(ira.getKokapena(), ira.getMaila().getIdMailak());
+					if(listKlase.size()==0) {
+						kodea=15;
+					}
+				}
+			}
+		}else {
+			if(ira.getMaila().getIdMailak()==1) {
+				if((ira.getKokapena()).isEmpty()) {
+					listKlase=zle.getIkas(ira.getIkasgaia().getIdIkasgaiak());
+					if(listKlase.size()==0) {
+						kodea=15;
+					}
+				}
+				else {
+					listKlase=zle.getKokIkas(ira.getKokapena(), ira.getIkasgaia().getIdIkasgaiak());
+					if(listKlase.size()==0) {
+						kodea=15;
+					}
+				}
+			}else {
+				if((ira.getKokapena()).isEmpty()) {
+					listKlase=zle.getIkasMaila(ira.getIkasgaia().getIdIkasgaiak(), ira.getMaila().getIdMailak());
+					if(listKlase.size()==0) {
+						kodea=15;
+					}
+				}
+				else {
+					listKlase=zle.getKokIkasMaila(ira.getKokapena(), ira.getIkasgaia().getIdIkasgaiak(), ira.getMaila().getIdMailak());
+					if(listKlase.size()==0) {
+						kodea=15;
+					}
+				}
+			}
+		}
+		
+	}
+	public void irakasleaGorde(String erabiltzaileIzena) {
+		irakaslea=zle.getIrakasleBakarra(erabiltzaileIzena);
+	}
+	public IrakasleakEntity irakaslearenDatuak() {
+		return irakaslea;
+	}
+	
+	public List<KlaseakEntity> getListKlaseak(){
+		List<KlaseakEntity> klaseak=(List<KlaseakEntity>)zle.getIrakasleBatenKlaseak(irakaslea.getErabiltzaileIzena());
+		return klaseak;
+	}
+	public void eskariaGehitu(int idKlasea) {
+		EskariakEntity eskaria=new EskariakEntity();
+		eskaria.setEgoera(0);
+		kodea=zle.addEskariaEntity(eskaria, ikasleLogin.getErabiltzaileIzena(), idKlasea);
 	}
 	
 	public int getKodea(){
@@ -82,6 +237,9 @@ public class IkasleZerbitzuakMB implements Serializable{
 				break;
 			case 9:
 				mezua="Erabiltzaile edo pasahitz okerrak";
+				break;
+			case 15:
+				mezua="Ez dago emaitzik";
 				break;
 			default:
 				mezua="default";

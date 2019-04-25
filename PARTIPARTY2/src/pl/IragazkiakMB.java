@@ -14,15 +14,11 @@ import dl.IkasgaiakEntity;
 import dl.MailakEntity;
 import dl.OrdutegiakEntity;
 
-
-
-
 @Named
 @RequestScoped
-public class KlaseaMB {
-
-	private String irak;
+public class IragazkiakMB {
 	
+	private String kokapena;
 	
 	private int idSelectItemIkasgaia;
 	private IkasgaiakEntity ikasgaia;
@@ -42,16 +38,15 @@ public class KlaseaMB {
 	private List<SelectItem> listSelectItemOrdutegia;
 	private List<OrdutegiakEntity> listOrdutegiak;
 	
-	public KlaseaMB() {
+	public  IragazkiakMB() {
 		
 	}
-	
 	@PostConstruct
 	public void prestatu(){
 		listIkasgaiak=zle.getIkasgaiakEntity();
 		listSelectItemIkasgaia=new ArrayList<SelectItem>();
 		IkasgaiakEntity klasIkas;
-		for(int i=1;i<listIkasgaiak.size();i++){
+		for(int i=0;i<listIkasgaiak.size();i++){
 			klasIkas=listIkasgaiak.get(i);
 			listSelectItemIkasgaia.add(new SelectItem(i,klasIkas.getIzena()));
 		}
@@ -59,7 +54,7 @@ public class KlaseaMB {
 		listMailak=zle.getMailakEntity();
 		listSelectItemMaila=new ArrayList<SelectItem>();
 		MailakEntity klasMaila;
-		for(int i=1;i<listMailak.size();i++){
+		for(int i=0;i<listMailak.size();i++){
 			klasMaila=listMailak.get(i);
 			listSelectItemMaila.add(new SelectItem(i,klasMaila.getIzena()));
 		}
@@ -67,7 +62,7 @@ public class KlaseaMB {
 		listOrdutegiak=zle.getOrdutegiakEntity();
 		listSelectItemOrdutegia=new ArrayList<SelectItem>();
 		OrdutegiakEntity klasOrdutegia;
-		for(int i=1;i<listOrdutegiak.size();i++){
+		for(int i=0;i<listOrdutegiak.size();i++){
 			klasOrdutegia=listOrdutegiak.get(i);
 			listSelectItemOrdutegia.add(new SelectItem(i,klasOrdutegia.getIzena()));
 		}
@@ -124,11 +119,10 @@ public class KlaseaMB {
 	public void setOrdutegia(OrdutegiakEntity ordutegia){
 		this.ordutegia=ordutegia;
 	}
-	
-	public String getIrak() {
-		return irak;
+	public String getKokapena() {
+		return kokapena;
 	}
-	public void setIrak(String irak) {
-		this.irak=irak;
+	public void setKokapena(String kokapena) {
+		this.kokapena=kokapena;
 	}
 }

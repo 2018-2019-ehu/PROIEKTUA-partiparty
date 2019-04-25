@@ -1,5 +1,6 @@
 package bl;
 
+
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -124,6 +125,35 @@ public class ZerbitzuLogikaEJB {
 		}
     	return kodea;
     }
+public void  ikasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
+    	
+    	IkasleakEntity ikasDB=(IkasleakEntity)em.
+    			createNamedQuery("IkasleakEntity.findErabiltzailea").
+    			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+    	ikasDB.setDatuak(datuak);
+    }
+    public void  ikaslePasahitzaAldatu(String erabiltzaileIzena, String pasahitza) {
+    	
+    	IkasleakEntity ikasDB=(IkasleakEntity)em.
+    			createNamedQuery("IkasleakEntity.findErabiltzailea").
+    			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+    	ikasDB.setPasahitza(pasahitza);
+    }
+	public void  ikasleKokapenaAldatu(String erabiltzaileIzena, String kokapena) {
+	
+	IkasleakEntity ikasDB=(IkasleakEntity)em.
+			createNamedQuery("IkasleakEntity.findErabiltzailea").
+			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+	ikasDB.setKokapena(kokapena);
+	}
+	public void  ikasleTelefonoaAldatu(String erabiltzaileIzena, String telefonoa) {
+	
+	IkasleakEntity ikasDB=(IkasleakEntity)em.
+			createNamedQuery("IkasleakEntity.findErabiltzailea").
+			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
+	ikasDB.setTelefonoZenbakia(telefonoa);
+	}
+    
     public int removeIkasleaEntity(int idIkasleak){
     	int kodea=0;
 		IkasleakEntity ikasleDB=(IkasleakEntity)em.find(IkasleakEntity.class,idIkasleak);
@@ -184,6 +214,64 @@ public class ZerbitzuLogikaEJB {
     			setParameter("erabiltzaileIzena", erabiltzaileIzena).getResultList();
     	
     	return klaseakDB;
+    }
+   
+	public List<KlaseakEntity> getKok(String kokapena){
+    		
+    	@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klase=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findKok")
+        			.setParameter("kokapena", kokapena).getResultList();
+    	return klase;
+    }
+  
+	public List<KlaseakEntity> getMaila(int idMaila){
+    	
+		@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klase=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findMaila")
+        			.setParameter("idMailak", idMaila).getResultList();
+        	
+    	return klase;
+    }
+    public List<KlaseakEntity> getIkas(int idIkasgaia){
+    	
+    	@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klase=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findIkasgaia")
+	    			.setParameter("idIkasgaiak", idIkasgaia).getResultList();
+
+    	return klase;
+    }
+    public List<KlaseakEntity> getKokMaila(String kokapena, int idMaila){
+    	
+    	@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klase=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findKokMaila")
+				.setParameter("kokapena", kokapena).setParameter("idMailak", idMaila).getResultList();
+
+    	return klase;
+    }
+    public List<KlaseakEntity> getKokIkas(String kokapena, int idIkasgaia){
+    	
+    	@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klase=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findKokIkas")
+					.setParameter("kokapena", kokapena).setParameter("idIkasgaiak", idIkasgaia).getResultList();
+
+    	return klase;
+    }
+    public List<KlaseakEntity> getIkasMaila(int idIkasgaia, int idMaila){
+    	
+    	@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klase=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findIkasMaila")
+					.setParameter("idIkasgaiak",idIkasgaia).setParameter("idMailak", idMaila).getResultList();
+		
+    	return klase;
+    }
+    public List<KlaseakEntity> getKokIkasMaila(String kokapena, int idIkasgaia, int idMaila){
+    	
+    	@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klase=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findKokIkasMaila")
+					.setParameter("kokapena", kokapena).setParameter("idIkasgaiak",idIkasgaia).
+					setParameter("idMailak", idMaila).getResultList();
+		
+    	return klase;
     }
     public int addKlaseaEntity(String erabiltzaileIzena, int idIkasgaia, int idMaila, int idOrdutegia) {
     	int kodea=0;
@@ -262,20 +350,21 @@ public class ZerbitzuLogikaEJB {
 		setParameter("erabiltzaileIzena", erabiltzaileIzena).getResultList();
     	return zerrenda;
     }
-    public int addEskariaEntity(EskariakEntity eskaria, String erabiltzaileIzena) {
+    public int addEskariaEntity(EskariakEntity eskaria, String erabiltzaileIzena, int idKlasea) {
     	int kodea=0;
     	IkasleakEntity ikaslea=(IkasleakEntity)em.
     			createNamedQuery("IkasleakEntity.findErabiltzailea").
     			setParameter("erabiltzaileIzena", erabiltzaileIzena).getSingleResult();
     	eskaria.setIkasleak(ikaslea);
+    	KlaseakEntity klasea=em.find(KlaseakEntity.class, idKlasea);
+    	eskaria.setKlaseak(klasea);
     	em.persist(eskaria);
     	kodea=6;
     	return kodea;
     }
     public void eskariaOnartu(int idEskaria) {
     	EskariakEntity esk=em.find(EskariakEntity.class, idEskaria);
-    	int i=1;
-    	esk.setEgoera(i);
+    	esk.setEgoera(1);
     }
     public int removeEskariaEntity(int idEskariak) {
     	int kodea=0;

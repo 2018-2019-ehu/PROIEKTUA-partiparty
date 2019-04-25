@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+
+	<ui:define name="Izenburua">PARTIPARTY</ui:define>
+	<ui:define name="OrrialdearenHasiera">
+		<h1>Klase berria</h1>
+	</ui:define>
+	
+	<ui:define name="Edukia">
+		<br/>
+		
+		<h2>IRAGAZKIAK</h2>
+		
+		<h:form>
+			<h:dataTable value="#{iragazkiakMB}" var="i">
+				<h:column>
+					<f:facet name="header">IKASGAIA</f:facet>
+					<h:selectOneMenu id="ikasgaia" value="#{i.idSelectItemIkasgaia}">
+						<f:selectItems value="#{i.listSelectItemIkasgaia}" />
+					</h:selectOneMenu>
+				</h:column>
+				<h:column>
+					<f:facet name="header">MAILA</f:facet>
+					<h:selectOneMenu id="maila" value="#{i.idSelectItemMaila}">
+						<f:selectItems value="#{i.listSelectItemMaila}" />
+					</h:selectOneMenu>
+				</h:column>
+				<h:column>
+					<f:facet name="header">KOKAPENA</f:facet>
+					<h:inputText id="kok" value="#{i.kokapena}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">EKINTZA</f:facet>
+					<h:commandButton id="bilatu" actionListener="#{ikasleZerbitzuakMB.klaseIragazkiak(i)}" action="bilaketaEmaitzak" value="BILATU"/>
+				</h:column>
+			</h:dataTable>
+			<br/>
+			</h:form>
+			<h2>BILAKETA</h2>
+			<h:form>
+				<h:dataTable value="#{orokorrakMB.listKlaseak}" var="i">
+					<h:column>
+						<f:facet name="header">IRAKASLEA</f:facet>
+						#{i.irakasleak.erabiltzaileIzena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">IKASGAIA</f:facet>
+						#{i.ikasgaiak.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">MAILA</f:facet>
+						#{i.mailak.izena}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">PREZIOA</f:facet>
+						#{i.irakasleak.dirua}
+					</h:column>		
+					<h:column>
+						<f:facet name="header">ORDUTEGIA</f:facet>
+						#{i.ordutegiak.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">KOKAPENA</f:facet>
+						#{i.irakasleak.kokapena}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">EKINTZA</f:facet>
+						<h:commandButton actionListener="#{ikasleZerbitzuakMB.irakasleaGorde(i.irakasleak.erabiltzaileIzena)}" action="ikasleakIkustenIrakaslearenProfila" value="IRAKASLEAREN PROFILA IKUSI" />
+					</h:column>	
+					
+				</h:dataTable>
+				
+			</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

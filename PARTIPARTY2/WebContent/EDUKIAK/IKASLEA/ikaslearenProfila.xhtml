@@ -16,7 +16,7 @@
 				
 		<h2>NIRE DATUAK</h2>
 		<h:panelGroup>
-				<h:dataTable value="#{adminZerbitzuakMB.irakaslearenProfila()}" var="i">
+				<h:dataTable value="#{ikasleZerbitzuakMB.ikaslearenProfila()}" var="i">
 					<h:column>
 						<f:facet name="header">IZENA</f:facet>
 						#{i.izena}
@@ -61,49 +61,19 @@
 			</h:panelGroup>
 			<br/>
 			<h:form>
-				<h:commandButton id="datuak" action="irakasleaDatuakAldatu" value="DATUAK ALDATU" />
+				<h:commandButton id="datuak" action="ikasleaDatuakAldatu" value="DATUAK ALDATU" />
+				<h:commandButton id="pas" action="ikasleaPasahitzaAldatu" value="PASAHITZA ALDATU" />
+				<h:commandButton id="kok" action="ikasleaKokapenaAldatu" value="KOKAPENA ALDATU" />
+				<h:commandButton id="tel" action="ikasleaTelefonoaAldatu" value="TELEFONO ZENBAKIA ALDATU" />
 				<br/><br/>
-				<h:commandButton id="pas" action="irakasleaPasahitzaAldatu" value="PASAHITZA ALDATU" />
-				<br/><br/>
-				<h:commandButton id="kok" action="irakasleaKokapenaAldatu" value="KOKAPENA ALDATU" />
-				<br/><br/>
-				<h:commandButton id="tel" action="irakasleaTelefonoaAldatu" value="TELEFONO ZENBAKIA ALDATU" />
+				<h:commandButton id="klasberri" action="bilaketa" value="KLASE BERRI BAT BILATU" />
 			</h:form>
 			
-			<h2>NIRE KLASEAK</h2>
-			<h:form>
-				<h:dataTable value="#{adminZerbitzuakMB.listKlaseak}" var="i">
-					<h:column>
-						<f:facet name="header">IKASGAIA</f:facet>
-						#{i.ikasgaiak.izena}
-						
-					</h:column>
-					<h:column>
-						<f:facet name="header">PREZIOA</f:facet>
-						#{i.irakasleak.dirua}
-					</h:column>		
-					<h:column>
-						<f:facet name="header">ORDUTEGIA</f:facet>
-						#{i.ordutegiak.izena}
-						
-					</h:column>
-					<h:column>
-						<f:facet name="header">MAILA</f:facet>
-						#{i.mailak.izena}
-					</h:column>	
-					<h:column>
-						<f:facet name="header">EKINTZA</f:facet>
-						<h:commandButton action="#{adminZerbitzuakMB.klaseaEzabatu(i.idKlaseak)}" value="EZABATU" />
-					</h:column>	
-					
-				</h:dataTable>
-				<br/><br/>
-				<h:commandButton action="klaseBatGehitu" value="KLASE BAT GEHITU" />
-			</h:form>
+		
 			<br/><br/>
 			<h2>ONARTUTAKO ESKAERAK</h2>
 			<h:form>
-				<h:dataTable value="#{adminZerbitzuakMB.listEskariOnartuak}" var="onar">
+				<h:dataTable value="#{ikasleZerbitzuakMB.listEskariOnartuak}" var="onar">
 					<h:column>
 						<f:facet name="header">IKASGAIA</f:facet>
 						#{onar.klaseak.ikasgaiak.izena}
@@ -127,17 +97,14 @@
 						<f:facet name="header">MAILA</f:facet>
 						#{onar.klaseak.mailak.izena}
 					</h:column>	
-					<h:column>
-						<f:facet name="header">EKINTZA</f:facet>
-						<h:commandButton action="#{adminZerbitzuakMB.eskariaEzeztatu(onar.idEskariak)}" value="EZEZTATU" />
-					</h:column>
+					
 					
 				</h:dataTable>
 			</h:form>
 			<br/><br/>
 			<h2>ONARTU GABEKO ESKAERAK</h2>
 			<h:form>
-				<h:dataTable value="#{adminZerbitzuakMB.listEskariEskatuak}" var="esk">
+				<h:dataTable value="#{ikasleZerbitzuakMB.listEskariEskatuak}" var="esk">
 					<h:column>
 						<f:facet name="header">IKASGAIA</f:facet>
 						#{esk.klaseak.ikasgaiak.izena}
@@ -161,11 +128,7 @@
 						<f:facet name="header">MAILA</f:facet>
 						#{esk.klaseak.mailak.izena}
 					</h:column>	
-					<h:column>
-						<f:facet name="header">EKINTZA</f:facet>
-						<h:commandButton action="#{adminZerbitzuakMB.eskariaOnartu(esk.idEskariak)}" value="ONARTU" />
-						<h:commandButton action="#{adminZerbitzuakMB.eskariaEzeztatu(esk.idEskariak)}" value="EZEZTATU" />
-					</h:column>	
+						
 					
 				</h:dataTable>
 			</h:form>

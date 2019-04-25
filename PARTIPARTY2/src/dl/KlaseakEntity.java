@@ -14,7 +14,13 @@ import javax.persistence.*;
 	@NamedQuery(name="KlaseakEntity.findAll", query="SELECT k FROM KlaseakEntity k"),
 	@NamedQuery(name="KlaseakEntity.findErabiltzailea", query="SELECT k FROM KlaseakEntity k WHERE k.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
 	@NamedQuery(name="KlaseakEntity.findIkasgaia", query="SELECT k FROM KlaseakEntity k WHERE k.ikasgaiak.idIkasgaiak = :idIkasgaiak"),
-	@NamedQuery(name="KlaseakEntity.findMaila", query="SELECT k FROM KlaseakEntity k WHERE k.mailak.idMailak = :idMailak")
+	@NamedQuery(name="KlaseakEntity.findMaila", query="SELECT k FROM KlaseakEntity k WHERE k.mailak.idMailak = :idMailak"),
+	@NamedQuery(name="KlaseakEntity.findKok", query="SELECT k FROM KlaseakEntity k WHERE k.irakasleak.kokapena = :kokapena"),
+	@NamedQuery(name="KlaseakEntity.findKokMaila", query="SELECT k FROM KlaseakEntity k WHERE k.irakasleak.kokapena = :kokapena AND k.mailak.idMailak = :idMailak"),
+	@NamedQuery(name="KlaseakEntity.findKokIkas", query="SELECT k FROM KlaseakEntity k WHERE k.irakasleak.kokapena = :kokapena AND k.ikasgaiak.idIkasgaiak = :idIkasgaiak"),
+	@NamedQuery(name="KlaseakEntity.findIkasMaila", query="SELECT k FROM KlaseakEntity k WHERE k.ikasgaiak.idIkasgaiak = :idIkasgaiak AND k.mailak.idMailak = :idMailak"),
+	@NamedQuery(name="KlaseakEntity.findKokIkasMaila", query="SELECT k FROM KlaseakEntity k WHERE k.irakasleak.kokapena = :kokapena AND k.ikasgaiak.idIkasgaiak = :idIkasgaiak AND k.mailak.idMailak = :idMailak")
+	
 })
 public class KlaseakEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

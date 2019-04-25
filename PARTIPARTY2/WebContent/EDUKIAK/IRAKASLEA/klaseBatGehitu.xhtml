@@ -48,7 +48,8 @@
 				<h:dataTable value="#{klaseaMB}" var="klas">
 					<h:column>
 						<f:facet name="header">IRAKASGAI BERRIA</f:facet>
-						<h:inputText id="irak" value="#{klas.irak}" />
+						<h:inputText id="irak" value="#{klas.irak}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
+						<h:message for="izena" style="color:red" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">EKINTZA</f:facet>

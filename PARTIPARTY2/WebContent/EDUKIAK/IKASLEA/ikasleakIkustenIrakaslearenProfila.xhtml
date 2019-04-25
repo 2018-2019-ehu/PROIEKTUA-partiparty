@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+
+	<ui:define name="Izenburua">PARTIPARTY</ui:define>
+	<ui:define name="OrrialdearenHasiera">
+		<h1>Ongi etorri zure profilera</h1>
+	</ui:define>
+	
+	<ui:define name="Edukia">
+		<br/>
+				
+		<h2>NIRE DATUAK</h2>
+		<h:panelGroup>
+				<h:dataTable value="#{ikasleZerbitzuakMB.irakaslearenDatuak()}" var="i">
+					<h:column>
+						<f:facet name="header">IZENA</f:facet>
+						#{i.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">ABIZENAK</f:facet>
+						#{i.abizenak}
+					</h:column>		
+					<h:column>
+						<f:facet name="header">DATUAK</f:facet>
+						#{i.datuak}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">ERABILTZAILE IZENA</f:facet>
+						#{i.erabiltzaileIzena}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">JAIOTZA DATA</f:facet>
+						<h:outputText value="#{i.jaiotzedata}">
+							<f:convertDateTime type="date" pattern="yyyy/MM/dd" timeZone="CET"/>
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">KOKAPENA</f:facet>
+						#{i.kokapena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">TELEFONO ZENBAKIA</f:facet>
+						#{i.telefonoZenbakia}
+						
+					</h:column>
+				</h:dataTable>
+			</h:panelGroup>
+			<br/>
+			
+			
+			<h2>NIRE KLASEAK</h2>
+			<h:form>
+				<h:dataTable value="#{ikasleZerbitzuakMB.listKlaseak}" var="i">
+					<h:column>
+						<f:facet name="header">IKASGAIA</f:facet>
+						#{i.ikasgaiak.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">PREZIOA</f:facet>
+						#{i.irakasleak.dirua}
+					</h:column>		
+					<h:column>
+						<f:facet name="header">ORDUTEGIA</f:facet>
+						#{i.ordutegiak.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">MAILA</f:facet>
+						#{i.mailak.izena}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">EKINTZA</f:facet>
+						<h:commandButton actionListener="#{ikasleZerbitzuakMB.eskariaGehitu(i.idKlaseak)}" action="ikaslearenProfila" value="ESKARIA BIDALI" />
+					</h:column>	
+					
+				</h:dataTable>
+				<br/><br/>
+				
+			</h:form>
+			<br/><br/>
+			
+	</ui:define>
+</ui:composition>
+</html>

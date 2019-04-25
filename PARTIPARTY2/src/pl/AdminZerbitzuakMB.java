@@ -1,7 +1,7 @@
 package pl;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -27,15 +27,19 @@ public class AdminZerbitzuakMB implements Serializable{
 	private int kodea;
 	private IrakasleakEntity irakasleLogin=new IrakasleakEntity();
 	
-	public void loginEgiaztatu(IrakasleaMB irakaslea) {
+	public String loginEgiaztatu(IrakasleaMB irakaslea) {
+		String orria="";
 		System.out.println("Hola");
 		kodea=zle.irakasleaEgiaztatu(irakaslea.getErabiltzaileIzena(), irakaslea.getPasahitza());
 		System.out.println("Kodea= "+kodea);
 		if(kodea==8) {
 			irakasleLogin=(IrakasleakEntity)zle.getIrakasleBakarra(irakaslea.getErabiltzaileIzena());
-			
+			orria="irakaslearenProfila.xhtml";
+		}else {
+			orria="/loginErrorea.xhtml";
 		}
 		System.out.println(irakasleLogin.getErabiltzaileIzena());
+		return orria;
 	}
 	
 	public void irakasleaGehitu(IrakasleaMB irakaslea) {
@@ -89,11 +93,11 @@ public class AdminZerbitzuakMB implements Serializable{
 		zle.addIkasgaiaEntity(ikas);
 	}
 	
-	public List<EskariakMB> getListEskariOnartuak(){
-		List<EskariakMB> eskariak;
-		eskariak=new ArrayList<EskariakMB>();
+	public List<EskariakEntity> getListEskariOnartuak(){
+		//List<EskariakMB> eskariak;
+		//eskariak=new ArrayList<EskariakMB>();
 		List<EskariakEntity> eskariList=(List<EskariakEntity>)zle.getIrakasleenEskariOnartuak(irakasleLogin.getErabiltzaileIzena());
-		EskariakEntity esk;
+		/*EskariakEntity esk;
 		EskariakMB aux=new EskariakMB();
 		for(int i=0;i<eskariList.size();i++) {
 			esk=eskariList.get(i);
@@ -104,14 +108,14 @@ public class AdminZerbitzuakMB implements Serializable{
 			aux.setOrdutegia(esk.getKlaseak().getOrdutegiak().getIzena());
 			aux.setMaila(esk.getKlaseak().getMailak().getIzena());
 			eskariak.add(i, aux);
-		}
-		return eskariak;
+		}*/
+		return eskariList;
 	}
-	public List<EskariakMB> getListEskariEskatuak(){
-		List<EskariakMB> eskariak;
-		eskariak=new ArrayList<EskariakMB>();
+	public List<EskariakEntity> getListEskariEskatuak(){
+		//List<EskariakMB> eskariak;
+		//eskariak=new ArrayList<EskariakMB>();
 		List<EskariakEntity> eskariList=(List<EskariakEntity>)zle.getIrakasleenEskariEskatuak(irakasleLogin.getErabiltzaileIzena());
-		EskariakEntity esk;
+		/*EskariakEntity esk;
 		EskariakMB aux=new EskariakMB();
 		for(int i=0;i<eskariList.size();i++) {
 			esk=eskariList.get(i);
@@ -122,8 +126,8 @@ public class AdminZerbitzuakMB implements Serializable{
 			aux.setOrdutegia(esk.getKlaseak().getOrdutegiak().getIzena());
 			aux.setMaila(esk.getKlaseak().getMailak().getIzena());
 			eskariak.add(i, aux);
-		}
-		return eskariak;
+		}*/
+		return eskariList;
 	}
 	public void eskariaOnartu(int idEskaria) {
 		zle.eskariaOnartu(idEskaria);
@@ -131,6 +135,7 @@ public class AdminZerbitzuakMB implements Serializable{
 	public void eskariaEzeztatu(int idEskaria) {
 		zle.removeEskariaEntity(idEskaria);
 	}
+	
 	public int getKodea(){
 		return kodea;
 	}

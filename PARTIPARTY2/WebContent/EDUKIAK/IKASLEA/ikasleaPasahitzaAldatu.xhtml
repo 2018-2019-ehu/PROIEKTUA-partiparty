@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+
+	<ui:define name="Izenburua">PARTIPARTY</ui:define>
+	<ui:define name="OrrialdearenHasiera">
+		<h1>Pasahitza aldatu</h1>
+	</ui:define>
+	
+	<ui:define name="Edukia">
+		<br/>
+				
+		<h2>NIRE DATUAK</h2>
+		<h:panelGroup>
+				<h:dataTable value="#{ikasleZerbitzuakMB.ikaslearenProfila()}" var="i">
+					<h:column>
+						<f:facet name="header">IZENA</f:facet>
+						#{i.izena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">ABIZENAK</f:facet>
+						#{i.abizenak}
+					</h:column>		
+					<h:column>
+						<f:facet name="header">DATUAK</f:facet>
+						#{i.datuak}
+					</h:column>
+					<h:column>
+						<f:facet name="header">ERABILTZAILE IZENA</f:facet>
+						#{i.erabiltzaileIzena}
+					</h:column>	
+					<h:column>
+						<f:facet name="header">PASAHITZA</f:facet>
+						#{i.pasahitza}
+					</h:column>
+					<h:column>
+						<f:facet name="header">JAIOTZA DATA</f:facet>
+						<h:outputText value="#{i.jaiotzedata}">
+							<f:convertDateTime type="date" pattern="yyyy/MM/dd" timeZone="CET"/>
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">KOKAPENA</f:facet>
+						#{i.kokapena}
+						
+					</h:column>
+					<h:column>
+						<f:facet name="header">TELEFONO ZENBAKIA</f:facet>
+						#{i.telefonoZenbakia}
+					</h:column>
+					
+				</h:dataTable>
+			</h:panelGroup>
+			<br/>
+			<h:form>
+			<h:dataTable value="#{ikasleaMB}" var="ikaslea">
+				<h:column>
+					<f:facet name="header">PASAHITZ BERRIA</f:facet>
+					<h:inputText id="pasahitza" value="#{ikaslea.pasahitza}" />
+				
+				</h:column>
+				<h:column>
+					<f:facet name="header">EKINTZA</f:facet>
+					<h:commandButton id="pas"  actionListener="#{ikasleZerbitzuakMB.ikaslearenPasahitzaAldatu(ikaslea)}"  action="ikaslearenProfila"  value="GORDE"/>
+				</h:column>
+			</h:dataTable>
+			<br/>
+							
+		</h:form>
+		
+		
+	</ui:define>
+</ui:composition>
+</html>

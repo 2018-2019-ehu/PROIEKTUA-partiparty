@@ -9,6 +9,7 @@ import javax.inject.Named;
 import bl.ZerbitzuLogikaEJB;
 import dl.IkasleakEntity;
 import dl.IrakasleakEntity;
+import dl.KlaseakEntity;
 
 
 @ApplicationScoped
@@ -32,6 +33,10 @@ public class OrokorrakMB {
 	public IrakasleakEntity irakaslearenDatuak() {
 		IrakasleakEntity irakas=(IrakasleakEntity)zerbitzuLogikaEJB.getIrakasleBakarra(erabIzena);
 		return irakas;
+	}
+	public List<KlaseakEntity> getListKlaseak(){
+		List<KlaseakEntity> klaseenZerrenda=zerbitzuLogikaEJB.getKlaseakEntity();
+		return klaseenZerrenda;
 	}
 	
 	public String getErabIzena() {

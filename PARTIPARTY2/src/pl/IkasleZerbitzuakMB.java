@@ -54,7 +54,7 @@ public class IkasleZerbitzuakMB implements Serializable{
 		String mezua;
 		switch (kodea){
 			case 0:
-				mezua="Ez dago errorerik";
+				mezua="Ez dago ";
 				break;
 			case 1:
 				mezua="Erabiltzaile izen horrekin irakasle bat existitzen da jadanik";

@@ -13,9 +13,11 @@
 	
 	<ui:define name="Edukia">
 		<br/>
-				
+		<h:form>
+			<h:commandButton  value="BIRKARGATU" />
+		</h:form>		
 		<h2>NIRE DATUAK</h2>
-		<h:panelGroup>
+		<h:form>
 				<h:dataTable value="#{ikasleZerbitzuakMB.ikaslearenProfila()}" var="i">
 					<h:column>
 						<f:facet name="header">IZENA</f:facet>
@@ -58,7 +60,7 @@
 					</h:column>
 					
 				</h:dataTable>
-			</h:panelGroup>
+			</h:form>
 			<br/>
 			<h:form>
 				<h:commandButton id="datuak" action="ikasleaDatuakAldatu" value="DATUAK ALDATU" />
@@ -66,6 +68,9 @@
 				<h:commandButton id="kok" action="ikasleaKokapenaAldatu" value="KOKAPENA ALDATU" />
 				<h:commandButton id="tel" action="ikasleaTelefonoaAldatu" value="TELEFONO ZENBAKIA ALDATU" />
 				<br/><br/>
+				
+			</h:form>
+			<h:form>
 				<h:commandButton id="klasberri" action="bilaketa" value="KLASE BERRI BAT BILATU" />
 			</h:form>
 			
@@ -80,8 +85,8 @@
 						
 					</h:column>
 					<h:column>
-						<f:facet name="header">IKASLEA</f:facet>
-						#{onar.ikasleak.erabiltzaileIzena}
+						<f:facet name="header">IRAKASLEA</f:facet>
+						#{onar.klaseak.irakasleak.erabiltzaileIzena}
 					</h:column>	
 							
 					<h:column>
@@ -111,8 +116,8 @@
 						
 					</h:column>
 					<h:column>
-						<f:facet name="header">IKASLEA</f:facet>
-						#{esk.ikasleak.erabiltzaileIzena}
+						<f:facet name="header">IRAKASLEA</f:facet>
+						#{esk.klaseak.irakasleak.erabiltzaileIzena}
 					</h:column>	
 							
 					<h:column>
@@ -128,9 +133,15 @@
 						<f:facet name="header">MAILA</f:facet>
 						#{esk.klaseak.mailak.izena}
 					</h:column>	
-						
+					<h:column>
+						<f:facet name="header">EKINTZA</f:facet>
+						<h:commandButton id="ez" action="#{ikasleZerbitzuakMB.eskariaEzeztatu(esk.idEskariak)}" value="EZEZTATU" />
+					</h:column>		
 					
 				</h:dataTable>
+			</h:form>
+			<h:form>
+				<h:commandButton action="ikasleZiurtatu" value="KONTUA EZABATU" />
 			</h:form>
 	</ui:define>
 </ui:composition>

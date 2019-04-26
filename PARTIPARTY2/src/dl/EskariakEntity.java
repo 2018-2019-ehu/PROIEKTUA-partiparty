@@ -12,6 +12,8 @@ import javax.persistence.*;
 @Table(name="Eskariak")
 @NamedQueries({
 	@NamedQuery(name="EskariakEntity.findAll", query="SELECT e FROM EskariakEntity e"),
+	@NamedQuery(name="EskariakEntity.findIrakaslea", query="SELECT e FROM EskariakEntity e WHERE e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
+	@NamedQuery(name="EskariakEntity.findIkaslea", query="SELECT e FROM EskariakEntity e WHERE e.ikasleak.erabiltzaileIzena = :erabiltzaileIzena"),
 	@NamedQuery(name="EskariakEntity.findIrakasOnartua", query="SELECT e FROM EskariakEntity e WHERE e.egoera = 1 AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
 	@NamedQuery(name="EskariakEntity.findIrakasEskatua", query="SELECT e FROM EskariakEntity e WHERE e.egoera = 0 AND e.klaseak.irakasleak.erabiltzaileIzena = :erabiltzaileIzena"),
 	@NamedQuery(name="EskariakEntity.findIkasOnartua", query="SELECT e FROM EskariakEntity e WHERE e.egoera = 1 AND e.ikasleak.erabiltzaileIzena = :erabiltzaileIzena"),

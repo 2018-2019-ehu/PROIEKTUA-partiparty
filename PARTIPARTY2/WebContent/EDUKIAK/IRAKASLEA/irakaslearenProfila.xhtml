@@ -13,7 +13,9 @@
 	
 	<ui:define name="Edukia">
 		<br/>
-				
+		<h:form>
+			<h:commandButton  value="BIRKARGATU" />
+		</h:form>		
 		<h2>NIRE DATUAK</h2>
 		<h:panelGroup>
 				<h:dataTable value="#{adminZerbitzuakMB.irakaslearenProfila()}" var="i">
@@ -168,6 +170,9 @@
 					</h:column>	
 					
 				</h:dataTable>
+			</h:form>
+			<h:form>
+				<h:commandButton action="irakasleZiurtatu" value="KONTUA EZABATU" />
 			</h:form>
 	</ui:define>
 </ui:composition>

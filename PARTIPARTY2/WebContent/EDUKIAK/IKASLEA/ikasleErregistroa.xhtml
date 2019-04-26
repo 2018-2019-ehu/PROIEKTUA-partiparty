@@ -20,11 +20,11 @@
 			
 			
 			
-		IZENA:	<h:inputText id="izena" value="#{ikasleaMB.izena}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
+		IZENA:	<h:inputText id="izena" value="#{ikasleaMB.izena}" required="true" requiredMesssage=" Izena falta da"/>
 			<h:message for="izena" style="color:red" />
 			
 			<br/>
-		ABIZENAK:	<h:inputText id="abizenak" value="#{ikasleaMB.abizenak}" required="true" requiredMesssage="Pasahitza falta da"/>
+		ABIZENAK:	<h:inputText id="abizenak" value="#{ikasleaMB.abizenak}" required="true" requiredMesssage="Abizenak falta dira"/>
 			<h:message for="abizenak" style="color:red" />
 			<br/>
 			
@@ -40,17 +40,18 @@
 			<br/>
 			
 			
-		JAIOTZE DATA:	<h:inputText id="jaiotzedata" value="#{ikasleaMB.jaiotzedata}" required="true" requiredMesssage=" Erabiltzaile izena falta da">
+		JAIOTZE DATA:	<h:inputText id="jaiotzedata" value="#{ikasleaMB.jaiotzedata}"  required="true" requiredMesssage=" Jaiotze data falta da">
+					<h:message for="jaiotzedata" style="color:red" />
 				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
 			</h:inputText>
-			<h:message for="jaiotzedata" style="color:red" />
+			
 			<br/>
 			
-		KOKAPENA:	<h:inputText id="kokapena" value="#{ikasleaMB.kokapena}" required="true" requiredMesssage="Pasahitza falta da"/>
+		KOKAPENA:	<h:inputText id="kokapena" value="#{ikasleaMB.kokapena}" required="true" requiredMesssage="Kokapena falta da"/>
 			<h:message for="kokapena" style="color:red" />
 			<br/>
 			
-		TELEFONO ZENBAKIA:	<h:inputText id="telefonoZenbakia" value="#{ikasleaMB.telefonoZenbakia}" required="true" requiredMesssage="Pasahitza falta da"/>
+		TELEFONO ZENBAKIA:	<h:inputText id="telefonoZenbakia" value="#{ikasleaMB.telefonoZenbakia}" required="true" requiredMesssage="Telefonoa falta da"/>
 			<h:message for="telefonoZenbakia" style="color:red" />
 			<br/>
 			

@@ -60,12 +60,24 @@ public class ZerbitzuLogikaEJB {
     }
     public int removeIrakasleaEntity(int idIrakasleak){
     	int kodea=0;
-		IrakasleakEntity irakasDB=(IrakasleakEntity)em.
-				find(IrakasleakEntity.class,idIrakasleak);
-		if(irakasDB!=null){
-			em.remove(irakasDB);
+		IrakasleakEntity irakasleDB=(IrakasleakEntity)em.find(IrakasleakEntity.class,idIrakasleak);
+		@SuppressWarnings("unchecked")
+		List<EskariakEntity> esk=(List<EskariakEntity>)em.createNamedQuery("EskariakEntity.findIrakaslea")
+				.setParameter("erabiltzaileIzena", irakasleDB.getErabiltzaileIzena()).getResultList();
+		for(int i=0;i<esk.size();i++) {
+			em.remove(esk.get(i));
+		}
+		@SuppressWarnings("unchecked")
+		List<KlaseakEntity> klaseak=(List<KlaseakEntity>)em.createNamedQuery("KlaseakEntity.findErabiltzailea")
+				.setParameter("erabiltzaileIzena", irakasleDB.getErabiltzaileIzena()).getResultList();
+		for(int i=0;i<klaseak.size();i++) {
+			em.remove(klaseak.get(i));
+		}
+		if(irakasleDB!=null){
+			em.remove(irakasleDB);
 			kodea=3;
 		}
+		
 		return kodea;
 	}
     
@@ -125,7 +137,7 @@ public class ZerbitzuLogikaEJB {
 		}
     	return kodea;
     }
-public void  ikasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
+    public void  ikasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
     	
     	IkasleakEntity ikasDB=(IkasleakEntity)em.
     			createNamedQuery("IkasleakEntity.findErabiltzailea").
@@ -157,10 +169,17 @@ public void  ikasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
     public int removeIkasleaEntity(int idIkasleak){
     	int kodea=0;
 		IkasleakEntity ikasleDB=(IkasleakEntity)em.find(IkasleakEntity.class,idIkasleak);
+		@SuppressWarnings("unchecked")
+		List<EskariakEntity> esk=(List<EskariakEntity>)em.createNamedQuery("EskariakEntity.findIkaslea")
+				.setParameter("erabiltzaileIzena", ikasleDB.getErabiltzaileIzena()).getResultList();
+		for(int i=0;i<esk.size();i++) {
+			em.remove(esk.get(i));
+		}
 		if(ikasleDB!=null){
 			em.remove(ikasleDB);
 			kodea=3;
 		}
+		
 		return kodea;
 	}
     
@@ -322,6 +341,7 @@ public void  ikasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
 		createNamedQuery("EskariakEntity.findAll").getResultList();
     	return eskarienZerrenda;
     }
+    
     public List<EskariakEntity> getIrakasleenEskariOnartuak(String erabiltzaileIzena){
     	@SuppressWarnings("unchecked")
 		List<EskariakEntity> zerrenda=(List<EskariakEntity>)em.
@@ -363,7 +383,7 @@ public void  ikasleDatuakAldatu(String erabiltzaileIzena, String datuak) {
     	return kodea;
     }
     public void eskariaOnartu(int idEskaria) {
-    	EskariakEntity esk=em.find(EskariakEntity.class, idEskaria);
+    	EskariakEntity esk=(EskariakEntity)em.find(EskariakEntity.class, idEskaria);
     	esk.setEgoera(1);
     }
     public int removeEskariaEntity(int idEskariak) {

@@ -30,16 +30,19 @@ public class IkasleZerbitzuakMB implements Serializable{
 	private IkasleakEntity ikasleLogin=new IkasleakEntity();
 	private IrakasleakEntity irakaslea=new IrakasleakEntity();
 	private List<KlaseakEntity> listKlase=new ArrayList<KlaseakEntity>();
+
 	
-	public void loginEgiaztatu(IkasleaMB ikaslea) {
-		System.out.println("Hola");
+	public String loginEgiaztatu(IkasleaMB ikaslea) {
+		String orria="ikasleSarrera.xhtml";
 		kodea=zle.ikasleaEgiaztatu(ikaslea.getErabiltzaileIzena(), ikaslea.getPasahitza());
 		System.out.println("Kodea= "+kodea);
 		if(kodea==8) {
 			ikasleLogin=(IkasleakEntity)zle.getIkasleBakarra(ikaslea.getErabiltzaileIzena());
-			
+			orria="ikaslearenProfila.xhtml";
+		}else {
+			orria="loginErroreaIkasle.xhtml";
 		}
-		System.out.println(ikasleLogin.getErabiltzaileIzena());
+		return orria;
 	}
 	
 	public void ikasleaGehitu(IkasleaMB ikaslea) {
@@ -95,27 +98,16 @@ public class IkasleZerbitzuakMB implements Serializable{
 		return eskariList;
 	}
 	public List<EskariakEntity> getListEskariEskatuak(){
-		//List<EskariakMB> eskariak=new ArrayList<EskariakMB>();
+		
 		List<EskariakEntity> eskariList=(List<EskariakEntity>)zle.getIkasleenEskariEskatuak(ikasleLogin.getErabiltzaileIzena());
-		/*EskariakEntity esk;
-		EskariakMB aux=new EskariakMB();
-		for(int i=0;i<eskariList.size();i++) {
-			esk=eskariList.get(i);
-			aux.setId(esk.getIdEskariak());
-			aux.setIkasgaia(esk.getKlaseak().getIkasgaiak().getIzena());
-			aux.setIkaslea(esk.getIkasleak().getErabiltzaileIzena());
-			aux.setPrezioa(esk.getKlaseak().getIrakasleak().getDirua());
-			aux.setOrdutegia(esk.getKlaseak().getOrdutegiak().getIzena());
-			aux.setMaila(esk.getKlaseak().getMailak().getIzena());
-			eskariak.add(i, aux);
-		}*/
+		
 		return eskariList;
 	}
 	public void eskariaOnartu(int idEskaria) {
 		zle.eskariaOnartu(idEskaria);
 	}
 	public void eskariaEzeztatu(int idEskaria) {
-		zle.removeEskariaEntity(idEskaria);
+		kodea=zle.removeEskariaEntity(idEskaria);
 	}
 	
 	public List<KlaseakEntity> iragazkienEmaitzak(){
@@ -200,6 +192,9 @@ public class IkasleZerbitzuakMB implements Serializable{
 		EskariakEntity eskaria=new EskariakEntity();
 		eskaria.setEgoera(0);
 		kodea=zle.addEskariaEntity(eskaria, ikasleLogin.getErabiltzaileIzena(), idKlasea);
+	}
+	public void ikasleaEzabatu() {
+		kodea=zle.removeIkasleaEntity(ikasleLogin.getIdIkasleak());
 	}
 	
 	public int getKodea(){

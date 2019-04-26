@@ -48,12 +48,13 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="login"  actionListener="#{ikasleZerbitzuakMB.loginEgiaztatu(ikaslea)}"  action="ikaslearenProfila"  value="SARTU"/>
+					<h:commandButton id="login"  action="#{ikasleZerbitzuakMB.loginEgiaztatu(ikaslea)}"  value="SARTU"/>
 				</h:column>
 			</h:dataTable>
 			<br/>
 			
 			<h:commandButton id="erregistroa" action="ikasleErregistroa" value="ERREGISTRATU"/>
+			<h:commandButton action="/EDUKIAK/index" value="ATZERA" />
 				
 		</h:form>
 		

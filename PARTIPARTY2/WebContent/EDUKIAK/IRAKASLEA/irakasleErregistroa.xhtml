@@ -20,11 +20,11 @@
 			
 			
 			
-		IZENA:	<h:inputText id="izena" value="#{irakasleaMB.izena}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
+		IZENA:	<h:inputText id="izena" value="#{irakasleaMB.izena}" required="true" requiredMesssage=" Izena falta da"/>
 			<h:message for="izena" style="color:red" />
 			
 			<br/>
-		ABIZENAK:	<h:inputText id="abizenak" value="#{irakasleaMB.abizenak}" required="true" requiredMesssage="Pasahitza falta da"/>
+		ABIZENAK:	<h:inputText id="abizenak" value="#{irakasleaMB.abizenak}" required="true" requiredMesssage="Abizenak falta dira"/>
 			<h:message for="abizenak" style="color:red" />
 			<br/>
 			
@@ -36,24 +36,26 @@
 			<h:message for="pasahitza" style="color:red" />
 			<br/>
 			
-		DATUAK:	<h:inputText id="datuak" value="#{irakasleaMB.datuak}" />
+		DATUAK:	<h:inputText id="datuak" value="#{irakasleaMB.datuak}" required="true" requiredMesssage="Datuak falta dira"/>
+			<h:message for="datuak" style="color:red" />
 			<br/>
 			
-		DIRUA:	<h:inputText id="dirua" value="#{irakasleaMB.dirua}" required="true" requiredMesssage="Pasahitza falta da"/>
+		DIRUA:	<h:inputText id="dirua" value="#{irakasleaMB.dirua}" required="true" requiredMesssage="Dirua falta da"/>
 			<h:message for="dirua" style="color:red" />
 			<br/>
 			
-		JAIOTZE DATA:	<h:inputText id="jaiotzedata" value="#{irakasleaMB.jaiotzedata}" required="true" requiredMesssage=" Erabiltzaile izena falta da">
+		JAIOTZE DATA:	<h:inputText id="jaiotzedata" value="#{irakasleaMB.jaiotzedata}" required="true" requiredMesssage=" Jaiotze data falta da">
+					<h:message for="jaiotzedata" style="color:red" />
 				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
 			</h:inputText>
-			<h:message for="jaiotzedata" style="color:red" />
+			
 			<br/>
 			
-		KOKAPENA:	<h:inputText id="kokapena" value="#{irakasleaMB.kokapena}" required="true" requiredMesssage="Pasahitza falta da"/>
+		KOKAPENA:	<h:inputText id="kokapena" value="#{irakasleaMB.kokapena}" required="true" requiredMesssage="Kokapena falta da"/>
 			<h:message for="kokapena" style="color:red" />
 			<br/>
 			
-		TELEFONO ZENBAKIA:	<h:inputText id="telefonoZenbakia" value="#{irakasleaMB.telefonoZenbakia}" required="true" requiredMesssage="Pasahitza falta da"/>
+		TELEFONO ZENBAKIA:	<h:inputText id="telefonoZenbakia" value="#{irakasleaMB.telefonoZenbakia}" required="true" requiredMesssage="Telefonoa falta da"/>
 			<h:message for="telefonoZenbakia" style="color:red" />
 			<br/>
 			

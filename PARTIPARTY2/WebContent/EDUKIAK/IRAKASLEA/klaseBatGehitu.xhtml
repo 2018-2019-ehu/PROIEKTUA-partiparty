@@ -13,7 +13,9 @@
 	
 	<ui:define name="Edukia">
 		<br/>
-		
+		<h:form>
+			<h:commandButton  value="BIRKARGATU" />
+		</h:form>
 		<h2>Sar itzazu klase berriaren datuak</h2>
 		
 		<h:form>
@@ -43,19 +45,9 @@
 			</h:dataTable>
 			<br/>
 			</h:form>
-			<h3>Ez dago eman nahi duzun ikasgaia? Gehitu hemen:</h3>
+			
 			<h:form>
-				<h:dataTable value="#{klaseaMB}" var="klas">
-					<h:column>
-						<f:facet name="header">IRAKASGAI BERRIA</f:facet>
-						<h:inputText id="irak" value="#{klas.irak}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
-						<h:message for="izena" style="color:red" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">EKINTZA</f:facet>
-						<h:commandButton id="gehituIrak" action="#{adminZerbitzuakMB.ikasgaiaGehitu(klas)}"  value="GEHITU"/>
-					</h:column>
-				</h:dataTable>
+			Ez dago eman nahi duzun ikasgaia? 	<h:commandButton action="ikasgaiaGehitu" value="GEHITU HEMEN" />
 			</h:form>
 		
 	</ui:define>

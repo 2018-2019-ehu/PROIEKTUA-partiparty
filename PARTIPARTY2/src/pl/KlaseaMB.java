@@ -21,8 +21,8 @@ import dl.OrdutegiakEntity;
 @RequestScoped
 public class KlaseaMB {
 
-	private String irak;
 	
+	private String irak;
 	
 	private int idSelectItemIkasgaia;
 	private IkasgaiakEntity ikasgaia;
@@ -44,6 +44,9 @@ public class KlaseaMB {
 	
 	public KlaseaMB() {
 		
+	}
+	public KlaseaMB(String irak) {
+		this.irak=irak;
 	}
 	
 	@PostConstruct

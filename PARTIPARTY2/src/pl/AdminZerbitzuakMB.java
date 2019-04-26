@@ -28,7 +28,7 @@ public class AdminZerbitzuakMB implements Serializable{
 	private IrakasleakEntity irakasleLogin=new IrakasleakEntity();
 	
 	public String loginEgiaztatu(IrakasleaMB irakaslea) {
-		String orria="";
+		String orria="irakasleSarrera.xhtml";
 		System.out.println("Hola");
 		kodea=zle.irakasleaEgiaztatu(irakaslea.getErabiltzaileIzena(), irakaslea.getPasahitza());
 		System.out.println("Kodea= "+kodea);
@@ -36,9 +36,9 @@ public class AdminZerbitzuakMB implements Serializable{
 			irakasleLogin=(IrakasleakEntity)zle.getIrakasleBakarra(irakaslea.getErabiltzaileIzena());
 			orria="irakaslearenProfila.xhtml";
 		}else {
-			orria="/loginErrorea.xhtml";
+			orria="loginErrorea.xhtml";
 		}
-		System.out.println(irakasleLogin.getErabiltzaileIzena());
+		System.out.println(orria+"orri");
 		return orria;
 	}
 	
@@ -90,7 +90,8 @@ public class AdminZerbitzuakMB implements Serializable{
 	public void ikasgaiaGehitu(KlaseaMB klas) {
 		IkasgaiakEntity ikas=new IkasgaiakEntity();
 		ikas.setIzena(klas.getIrak());
-		zle.addIkasgaiaEntity(ikas);
+		kodea=zle.addIkasgaiaEntity(ikas);
+		System.out.println(kodea);
 	}
 	
 	public List<EskariakEntity> getListEskariOnartuak(){
@@ -133,7 +134,10 @@ public class AdminZerbitzuakMB implements Serializable{
 		zle.eskariaOnartu(idEskaria);
 	}
 	public void eskariaEzeztatu(int idEskaria) {
-		zle.removeEskariaEntity(idEskaria);
+		kodea=zle.removeEskariaEntity(idEskaria);
+	}
+	public void irakasleaEzabatu() {
+		kodea=zle.removeIrakasleaEntity(irakasleLogin.getIdIrakasleak());
 	}
 	
 	public int getKodea(){

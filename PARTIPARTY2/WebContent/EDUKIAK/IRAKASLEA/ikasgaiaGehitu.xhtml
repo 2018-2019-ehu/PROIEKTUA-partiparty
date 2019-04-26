@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+
+	<ui:define name="Izenburua">PARTIPARTY</ui:define>
+	<ui:define name="OrrialdearenHasiera">
+		<h1>Klase berria</h1>
+	</ui:define>
+	
+	<ui:define name="Edukia">
+		<br/>
+		
+		<h2>Idatzi ikasgai berriaren izena</h2>
+		
+			<h:form>
+				<h:dataTable value="#{klaseaMB}" var="klas">
+					<h:column>
+						<f:facet name="header">IRAKASGAI BERRIA</f:facet>
+						<h:inputText id="irak" value="#{klas.irak}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
+						<h:message for="izena" style="color:red" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">EKINTZA</f:facet>
+						<h:commandButton id="gehituIrak" action="#{adminZerbitzuakMB.ikasgaiaGehitu(klas)}"  value="GEHITU"/>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+			<h:form>
+			Ez duzu ezer gehiago gehitu nahi? <h:commandButton action="klaseBatGehitu" value="ATZERA" />
+			</h:form>
+			
+		
+	</ui:define>
+</ui:composition>
+</html>

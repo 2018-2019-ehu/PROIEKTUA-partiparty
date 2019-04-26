@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
+
+	<ui:define name="Izenburua">PARTIPARTY</ui:define>
+	<ui:define name="OrrialdearenHasiera">
+		<h1>KONTUA EZABATU</h1>
+	</ui:define>
+	
+	<ui:define name="Edukia">
+		<br/>
+		
+		<h2>ZIUR ZAUDE KONTUA EZABATU NAHI DUZULA?</h2>
+		<h:form >
+			<h:commandButton actionListener="#{adminZerbitzuakMB.irakasleaEzabatu()}" action="irakasleEzabatuta" value="BAI" />
+			<h:commandButton action="irakaslearenProfila" value="EZ" />
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

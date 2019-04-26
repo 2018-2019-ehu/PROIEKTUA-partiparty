@@ -29,16 +29,23 @@ public class AdminZerbitzuakMB implements Serializable{
 	
 	public String loginEgiaztatu(IrakasleaMB irakaslea) {
 		String orria="irakasleSarrera.xhtml";
-		System.out.println("Hola");
+		
 		kodea=zle.irakasleaEgiaztatu(irakaslea.getErabiltzaileIzena(), irakaslea.getPasahitza());
-		System.out.println("Kodea= "+kodea);
-		if(kodea==8) {
+		
+		if(kodea==12) {
 			irakasleLogin=(IrakasleakEntity)zle.getIrakasleBakarra(irakaslea.getErabiltzaileIzena());
 			orria="irakaslearenProfila.xhtml";
 		}else {
-			orria="loginErrorea.xhtml";
+			if(kodea==10) {
+				orria="erabiltzaileErroreaIrakasle.xhtml";
+			}else {
+				if(kodea==11) {
+					orria="pasahitzErroreaIrakasle.xhtml";
+				}
+			}
+			
 		}
-		System.out.println(orria+"orri");
+		
 		return orria;
 	}
 	

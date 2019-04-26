@@ -8,36 +8,35 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Sartu edo erregistratu, ikasle</h1>
+		<h1>Sartu edo erregistratu, irakasle</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
 		<br/>
 		
-		
+		<h4>PASAHITZ OKERRA</h4>
 		
 		<h:form>
-			<h:dataTable value="#{ikasleaMB}" var="ikaslea">
+			<h:dataTable value="#{irakasleaMB}" var="irakaslea">
 				<h:column>
 					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
-					<h:inputText id="erabiltzaileIzena" value="#{ikaslea.erabiltzaileIzena}" />
+					<h:inputText id="erabiltzaileIzena" value="#{irakaslea.erabiltzaileIzena}" />
 				
 				</h:column>
 				<h:column>
 					<f:facet name="header">PASAHITZA</f:facet>
-					<h:inputText id="pasahitza" value="#{ikaslea.pasahitza}" />
+					<h:inputText id="pasahitza" value="#{irakaslea.pasahitza}" />
 					
 				</h:column>
 				<h:column>
 					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="login"  action="#{ikasleZerbitzuakMB.loginEgiaztatu(ikaslea)}"  value="SARTU"/>
+					<h:commandButton id="login"  action="#{adminZerbitzuakMB.loginEgiaztatu(irakaslea)}"  value="SARTU"/>
 				</h:column>
 			</h:dataTable>
 			<br/>
 			
-			<h:commandButton id="erregistroa" action="ikasleErregistroa" value="ERREGISTRATU"/>
+			<h:commandButton id="erregistroa" action="irakasleErregistroa" value="ERREGISTRATU"/>
 			<h:commandButton action="/EDUKIAK/index" value="ATZERA" />
-				
 		</h:form>
 		
 	</ui:define>

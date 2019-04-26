@@ -400,29 +400,39 @@ public class ZerbitzuLogikaEJB {
     public int irakasleaEgiaztatu(String erabiltzaileIzena, String pasahitza) {
     	int kodea=0;
     	try {
-			@SuppressWarnings("unused")
-			IrakasleakEntity irakasDB=(IrakasleakEntity)em.
-					createNamedQuery("IrakasleakEntity.findErabilPasahitz")
-					.setParameter("erabiltzaileIzena", erabiltzaileIzena)
-					.setParameter("pasahitza", pasahitza).getSingleResult();
-			kodea=8;
+    		@SuppressWarnings("unused")
+    		IrakasleakEntity irakasDB=(IrakasleakEntity)em.
+    				createNamedQuery("IrakasleakEntity.findErabiltzailea")
+    				.setParameter("erabiltzaileIzena", erabiltzaileIzena)
+    				.getSingleResult();
+    		if(irakasDB.getPasahitza().equals(pasahitza)) {
+				kodea=12;
+			}else {
+				kodea=11;//Pasahitz okerra
+			}
 		} catch (Exception e) {
-			kodea=9;
+			kodea=10;//Erabiltzailea okerra
 		}
+		
     	return kodea;
     }
     public int ikasleaEgiaztatu(String erabiltzaileIzena, String pasahitza) {
     	int kodea=0;
     	try {
-			@SuppressWarnings("unused")
-			IkasleakEntity irakasDB=(IkasleakEntity)em.
-					createNamedQuery("IkasleakEntity.findErabilPasahitz")
-					.setParameter("erabiltzaileIzena", erabiltzaileIzena)
-					.setParameter("pasahitza", pasahitza).getSingleResult();
-			kodea=8;
+    		
+    		IkasleakEntity ikasDB=(IkasleakEntity)em.
+    				createNamedQuery("IkasleakEntity.findErabiltzailea")
+    				.setParameter("erabiltzaileIzena", erabiltzaileIzena)
+    				.getSingleResult();
+    		if(ikasDB.getPasahitza().equals(pasahitza)) {
+				kodea=12;
+			}else {
+				kodea=11;//Pasahitz okerra
+			}
 		} catch (Exception e) {
-			kodea=9;
+			kodea=10;//Erabiltzailea okerra
 		}
+		
     	return kodea;
     }
 

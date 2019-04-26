@@ -34,14 +34,23 @@ public class IkasleZerbitzuakMB implements Serializable{
 	
 	public String loginEgiaztatu(IkasleaMB ikaslea) {
 		String orria="ikasleSarrera.xhtml";
+		
 		kodea=zle.ikasleaEgiaztatu(ikaslea.getErabiltzaileIzena(), ikaslea.getPasahitza());
-		System.out.println("Kodea= "+kodea);
-		if(kodea==8) {
+		
+		if(kodea==12) {
 			ikasleLogin=(IkasleakEntity)zle.getIkasleBakarra(ikaslea.getErabiltzaileIzena());
 			orria="ikaslearenProfila.xhtml";
 		}else {
-			orria="loginErroreaIkasle.xhtml";
+			if(kodea==10) {
+				orria="erabiltzaileErroreaIkasle.xhtml";
+			}else {
+				if(kodea==11) {
+					orria="pasahitzErroreaIkasle.xhtml";
+				}
+			}
+			
 		}
+		
 		return orria;
 	}
 	

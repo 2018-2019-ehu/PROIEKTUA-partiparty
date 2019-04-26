@@ -14,25 +14,7 @@
 	<ui:define name="Edukia">
 		<br/>
 		
-		<h2>IRAKASLEAK</h2>
 		
-		<h:form>
-			<h:dataTable value="#{orokorrakMB.listIrakasleak}" var="irakaslea">
-				<h:column>
-					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
-					#{irakaslea.erabiltzaileIzena}
-				</h:column>			
-				<h:column>
-					<f:facet name="header">IZENA</f:facet>
-					#{irakaslea.izena}
-				</h:column>
-				<h:column>
-					<f:facet name="header">ABIZENAK</f:facet>
-					#{irakaslea.abizenak}
-				</h:column>
-				
-			</h:dataTable>
-		</h:form>
 		
 		<h:form>
 			<h:dataTable value="#{irakasleaMB}" var="irakaslea">

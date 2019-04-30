@@ -8,23 +8,25 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Erregistroa</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
 		<br/>
 		
-		<h2>Sar itzazu zure datuak erregistroa betetzeko</h2>
 		
+		<div class="burukoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="FitxLogo" />
+		</div>
+		<div class="hutsunea">
+		</div>
+		<div id="login">
 		<h:form>
 			
-			
-			
-		IZENA:	<h:inputText id="izena" value="#{irakasleaMB.izena}" required="true" requiredMesssage=" Izena falta da"/>
+		IZENA:	<br/><h:inputText id="izena" value="#{irakasleaMB.izena}" required="true" requiredMesssage=" Erabiltzaile izena falta da"/>
 			<h:message for="izena" style="color:red" />
 			
 			<br/>
-		ABIZENAK:	<h:inputText id="abizenak" value="#{irakasleaMB.abizenak}" required="true" requiredMesssage="Abizenak falta dira"/>
+		ABIZENAK:	<h:inputText id="abizenak" value="#{irakasleaMB.abizenak}" required="true" requiredMesssage="Pasahitza falta da"/>
 			<h:message for="abizenak" style="color:red" />
 			<br/>
 			
@@ -32,23 +34,21 @@
 			<h:message for="erabiltzaileIzena" style="color:red" />
 			<br/>	
 			
-		PASAHITZA:	<h:inputSecret id="pasahitza" value="#{irakasleaMB.pasahitza}" required="true" requiredMesssage="Pasahitza falta da"/>
+		PASAHITZA:	<h:inputText id="pasahitza" value="#{irakasleaMB.pasahitza}" required="true" requiredMesssage="Pasahitza falta da"/>
 			<h:message for="pasahitza" style="color:red" />
 			<br/>
 			
-		DATUAK:	<h:inputText id="datuak" value="#{irakasleaMB.datuak}" required="true" requiredMesssage="Datuak falta dira"/>
-			<h:message for="datuak" style="color:red" />
+		DATUAK:	<h:inputText id="datuak" value="#{irakasleaMB.datuak}" />
 			<br/>
 			
 		DIRUA:	<h:inputText id="dirua" value="#{irakasleaMB.dirua}" required="true" requiredMesssage="Dirua falta da"/>
 			<h:message for="dirua" style="color:red" />
 			<br/>
 			
-		JAIOTZE DATA:	<h:inputText id="jaiotzedata" value="#{irakasleaMB.jaiotzedata}" required="true" requiredMesssage=" Jaiotze data falta da">
-					<h:message for="jaiotzedata" style="color:red" />
+		JAIOTZE DATA:	<h:inputText id="jaiotzedata" value="#{irakasleaMB.jaiotzedata}" required="true" requiredMesssage=" Erabiltzaile izena falta da">
 				<f:convertDateTime pattern="yyyy/MM/dd" timeZone="CET"/>
 			</h:inputText>
-			
+			<h:message for="jaiotzedata" style="color:red" />
 			<br/>
 			
 		KOKAPENA:	<h:inputText id="kokapena" value="#{irakasleaMB.kokapena}" required="true" requiredMesssage="Kokapena falta da"/>
@@ -60,16 +60,14 @@
 			<br/>
 			
 			<h:commandButton id="erregistroa" actionListener="#{adminZerbitzuakMB.irakasleaGehitu(irakasleaMB)}" action="irakasleSarrera" value="ERREGISTRATU"/>
-			
-			<br/>
-			
-				
-			<br/><br/>
-			
 		</h:form>
+		<div id="login">
 		<h:form>
-			<h:commandButton id="logineraBueltatu" action="irakasleSarrera" value="LOGINERA BUELTATU"/>
+			<h:commandButton id="logineraBueltatu" actionListener="#{irakasleaMB.clearForm()}" action="irakasleSarrera" value="LOGINERA BUELTATU"/>
 		</h:form>
+		</div>
+	</div>
+
 	</ui:define>
 </ui:composition>
 </html>

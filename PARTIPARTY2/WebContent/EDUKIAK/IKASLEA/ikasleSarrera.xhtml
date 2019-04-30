@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http.//xmlns.jcp.org/jsf/passthrough">
+      
 
 <ui:composition template="/EDUKIAK/TXANT/txantiloia.xhtml">
 
@@ -14,10 +16,9 @@
 	<ui:define name="Edukia">
 		<br/>
 		<div class="burukoa">
-		<img src="../IRUDIAK/LOGO1.png" alt="FitxLogo" />
+		<img src="IRUDIAK/LOGO1.png" alt="pepapig" />
 		</div>
-		<div class="hutsunea">
-		</div>
+		
 		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==8}">
 			#{adminZerbitzuakMB.mezua}
 		</h:panelGroup>
@@ -30,12 +31,12 @@
 			
 					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
 					<span class="fontawesome-user"></span>
-					<h:inputText id="erabiltzaileIzena"  type="text" value="#{ikasleaMB.erabiltzaileIzena}" />
+					<h:inputText id="erabiltzaileIzena" a:placeholder="Erabiltzaile izena" type="text" value="#{ikasleaMB.erabiltzaileIzena}" />
 				
 				
 					<f:facet name="header">PASAHITZA</f:facet>
 					<span class="fontawesome-lock"></span>
-					<h:inputSecret id="pasahitza" type="password" value="#{ikasleaMB.pasahitza}" />
+					<h:inputSecret id="pasahitza" a:placeholder="Pasahitza" type="password" value="#{ikasleaMB.pasahitza}" />
 					
 				
 			

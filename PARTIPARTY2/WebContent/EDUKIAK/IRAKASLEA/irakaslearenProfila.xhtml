@@ -13,10 +13,14 @@
 	
 	<ui:define name="Edukia">
 		<br/>
+	<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		</div>
 		<h:form>
-			<h:commandButton  value="BIRKARGATU" />
+			<h:commandButton value="BIRKARGATU" />
 		</h:form>		
 		<h2>NIRE DATUAK</h2>
+		
 		<h:panelGroup>
 				<h:dataTable value="#{adminZerbitzuakMB.irakaslearenProfila()}" var="i">
 					<h:column>
@@ -61,17 +65,19 @@
 					
 				</h:dataTable>
 			</h:panelGroup>
+			
 			<br/>
+			<div id="login">
 			<h:form>
 				<h:commandButton id="datuak" action="irakasleaDatuakAldatu" value="DATUAK ALDATU" />
-				<br/><br/>
+				
 				<h:commandButton id="pas" action="irakasleaPasahitzaAldatu" value="PASAHITZA ALDATU" />
-				<br/><br/>
+				
 				<h:commandButton id="kok" action="irakasleaKokapenaAldatu" value="KOKAPENA ALDATU" />
-				<br/><br/>
+				
 				<h:commandButton id="tel" action="irakasleaTelefonoaAldatu" value="TELEFONO ZENBAKIA ALDATU" />
 			</h:form>
-			
+			</div>
 			<h2>NIRE KLASEAK</h2>
 			<h:form>
 				<h:dataTable value="#{adminZerbitzuakMB.listKlaseak}" var="i">
@@ -175,6 +181,7 @@
 				<h:commandButton  action="/EDUKIAK/index" value="SAIOA ITXI" />
 				<h:commandButton action="irakasleZiurtatu" value="KONTUA EZABATU" />
 			</h:form>
+			
 	</ui:define>
 </ui:composition>
 </html>

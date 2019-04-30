@@ -50,7 +50,7 @@ public class IkasleZerbitzuakMB implements Serializable{
 			}
 			
 		}
-		
+		ikaslea.clearForm();
 		return orria;
 	}
 	
@@ -60,6 +60,8 @@ public class IkasleZerbitzuakMB implements Serializable{
 				ikaslea.getJaiotzedata(), ikaslea.getKokapena(), 
 				ikaslea.getTelefonoZenbakia());
 		kodea=zle.addIkasleaEntity(ikasDB);
+		ikaslea.clearForm();
+
 		
 	}
 	

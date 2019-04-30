@@ -105,5 +105,16 @@ public class IrakasleaMB {
 	public void setTelefonoZenbakia(String telefonoZenbakia) {
 		this.telefonoZenbakia = telefonoZenbakia;
 	}
+	public void  clearForm() {
+		this.izena="";
+		this.abizenak="";
+		this.datuak="";
+		this.erabiltzaileIzena="";
+		this.pasahitza="";
+		this.jaiotzedata=null;
+		this.kokapena="";
+		this.telefonoZenbakia="";
+		this.dirua=0.0f;
+	}
 	
 }

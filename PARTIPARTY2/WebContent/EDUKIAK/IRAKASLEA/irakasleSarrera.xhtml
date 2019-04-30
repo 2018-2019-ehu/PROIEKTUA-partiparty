@@ -14,31 +14,49 @@
 	<ui:define name="Edukia">
 		<br/>
 		
+<br/>
+		<div class="burukoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="FitxLogo" />
+		</div>
+		<div class="hutsunea">
+		</div>
+		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==8}">
+			#{adminZerbitzuakMB.mezua}
+		</h:panelGroup>
+		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==9}">
+			#{adminZerbitzuakMB.mezua}
+		</h:panelGroup>
 		
-		
+		<div id="login">
 		<h:form>
-			<h:dataTable value="#{irakasleaMB}" var="irakaslea">
-				<h:column>
+			
 					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
-					<h:inputText id="erabiltzaileIzena" value="#{irakaslea.erabiltzaileIzena}" />
+					<span class="fontawesome-user"></span>
+					<h:inputText id="erabiltzaileIzena"  type="text" value="#{irakasleaMB.erabiltzaileIzena}" />
 				
-				</h:column>
-				<h:column>
+				
 					<f:facet name="header">PASAHITZA</f:facet>
-					<h:inputText id="pasahitza" value="#{irakaslea.pasahitza}" />
+					<span class="fontawesome-lock"></span>
+					<h:inputSecret id="pasahitza" type="password" value="#{irakasleaMB.pasahitza}" />
 					
-				</h:column>
-				<h:column>
+				
+			
 					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="login"  action="#{adminZerbitzuakMB.loginEgiaztatu(irakaslea)}"  value="SARTU"/>
-				</h:column>
-			</h:dataTable>
+					<h:commandButton id="login" type="submit" actionListener="#{adminZerbitzuakMB.loginEgiaztatu(irakasleaMB)}"  action="irakaslearenProfila"  value="SAIOA HASI"/>
+				
+			
 			<br/>
 			
-			<h:commandButton id="erregistroa" action="irakasleErregistroa" value="ERREGISTRATU"/>
-			<h:commandButton action="/EDUKIAK/index" value="ATZERA" />
+        <p>Oraindik ez zara erabiltzaile? <a href="/PARTIPARTY2/EDUKIAK/IRAKASLEA/irakasleErregistroa.xhtml">Erregistratu orain</a></p>
+				
 		</h:form>
-		
+		</div>
+		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==1}">
+				#{adminZerbitzuakMB.mezua}
+		</h:panelGroup>
+		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==2}">
+				#{adminZerbitzuakMB.mezua}
+		</h:panelGroup>
 	</ui:define>
 </ui:composition>
 </html>

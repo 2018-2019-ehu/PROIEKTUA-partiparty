@@ -16,7 +16,7 @@ import dl.KlaseakEntity;
 
 @Named
 @SessionScoped
-public class AdminZerbitzuakMB implements Serializable{
+public class adminZerbitzuakMB implements Serializable{
 
 	/**
 	 * 
@@ -45,17 +45,20 @@ public class AdminZerbitzuakMB implements Serializable{
 			}
 			
 		}
+		irakaslea.clearForm();
 		
 		return orria;
 	}
 	
 	public void irakasleaGehitu(IrakasleaMB irakaslea) {
+		
 		IrakasleakEntity irakasDB=new IrakasleakEntity(irakaslea.getIzena(),irakaslea.getAbizenak(), 
 				irakaslea.getDatuak(), irakaslea.getErabiltzaileIzena(), irakaslea.getPasahitza(), 
 				irakaslea.getDirua(),irakaslea.getJaiotzedata(), irakaslea.getKokapena(), 
 				irakaslea.getTelefonoZenbakia());
 		kodea=zle.addIrakasleaEntity(irakasDB);
-		
+		irakaslea.clearForm();
+
 	}
 	public void irakaslearenDatuakAldatu(IrakasleaMB irakaslea) {
 

@@ -24,7 +24,7 @@ body {
 	background-color: #2c3338;
 	color: #ffffff;
 	font-family: 'Open Sans', Arial, sans-serif;
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 1.5em;
 }
 
@@ -45,6 +45,8 @@ a:hover {
 }
 .logoa img{
 	height: 100px;
+	display: block;
+	margin-top: 2px;
 	
 }
 input {
@@ -58,6 +60,7 @@ input {
 
 p {
 	line-height: 1.5em;
+	text-align:center;
 }
 
 .clearfix { *zoom: 1; } /* For IE 6/7 */
@@ -68,18 +71,90 @@ p {
 .clearfix:after { clear: both; }
 
 /* ---------- LOGIN ---------- */
+#botoiak {
+	margin: 10px  ;
+	width: 100%;
+	possition:center;
+	
+}
+.botoiak button{
+	margin:auto;
+}
+#botoiak form input[type="submit"] {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: #729fcf;
+	color: #eee;
+	font-weight: bold;
+	margin-bottom: 2em;
+	text-transform: uppercase;
+	width: 280px;
+	padding: 7px;
+	margin-left: 5px;
+}
+#botoiak form input[type="submit"]:hover {
+	background-color: #d44179;
+}
+
+#profila {
+	margin: 50px auto ;
+	width: 80%;
+}
+#profila form input {
+	height: 50px;
+}
+.izenburuak{
+	text-align: left; 
+	font-family: Arial Black; 
+	font-weight: bold; font-size: 30px; 
+	background: #ffffff; 
+	-webkit-background-clip: text; 
+	-moz-background-clip: text; 
+	background-clip: text; 
+
+	}
+}
+#profila form input[type="text"], input[type="password"] {
+	background-color: #3b4148;
+	border-radius: 0px 3px 3px 0px;
+	-moz-border-radius: 0px 3px 3px 0px;
+	-webkit-border-radius: 0px 3px 3px 0px;
+	color: #eeeeec;
+	margin-bottom: 1em;
+	padding: 0 16px;
+	width: 198px;
+}
+#profila > p {
+	text-align: center;
+}
+#profila form span {
+	background-color: #363b41;
+	border-radius: 3px 0px 0px 3px;
+	-moz-border-radius: 3px 0px 0px 3px;
+	-webkit-border-radius: 3px 0px 0px 3px;
+	color: #babdb6;
+	display: block;
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	width: 50px;
+}
+#profila > p span {
+	padding-left: 5px;
+}
 
 #login {
 	margin: 50px auto ;
 	width: 280px;
 }
-
 #login form span {
 	background-color: #363b41;
 	border-radius: 3px 0px 0px 3px;
 	-moz-border-radius: 3px 0px 0px 3px;
 	-webkit-border-radius: 3px 0px 0px 3px;
-	color: #606468;
+	color: #babdb6;
 	display: block;
 	float: left;
 	height: 50px;
@@ -122,23 +197,48 @@ p {
 #login > p {
 	text-align: center;
 }
-
 #login > p span {
 	padding-left: 5px;
 }
+
 @CHARSET "UTF-8";
 h1{
 	text-align: center;
+	margin: 0;
+  	font-size: 30px;  
+  	  
 }
+
 table, th, td{
 	border: 1px solid green;
 	border-collapse:collapse;
 	text-align: center;
 	padding:10px;
 	margin:auto;
-	
 }
+
 th{
 	background-color:#44c386;
 	color:white;
+	font-weight: bold;
+	
+}
+.oharrak{
+	font-size: 20px;
+	color: #F00; 
+	text-align:center;
+	width:100%;
+	}
+
+hr {
+	border: 4px;
+	border-top: 2px solid #999; 
+	border-bottom: 2px solid #333;
+	height:0;
+}
+.button{
+	
+}
+
+
 }

@@ -17,46 +17,28 @@
 		
 <br/>
 		<div class="burukoa">
-		<img src="IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<img src="./IRUDIAK/LOGO1.png" alt="PPLogo" />
 		</div>
-		
-		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==8}">
-			#{adminZerbitzuakMB.mezua}
-		</h:panelGroup>
-		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==9}">
-			#{adminZerbitzuakMB.mezua}
-		</h:panelGroup>
-		
 		<div id="login">
 		<h:form>
 			
-					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
 					<span class="fontawesome-user"></span>
-					<h:inputText id="erabiltzaileIzena"  a:placeholder="Erabiltzaile izena" value="#{irakasleaMB.erabiltzaileIzena}" />
+					<h:inputText id="erabiltzaileIzena" placeholder="Erabiltzaile izena" value="#{irakasleaMB.erabiltzaileIzena}" />
 				
 				
-					<f:facet name="header">PASAHITZA</f:facet>
 					<span class="fontawesome-lock"></span>
-					<h:inputSecret id="pasahitza" a:placeholder="Erabiltzaile izena"  value="#{irakasleaMB.pasahitza}" />
+					<h:inputSecret id="pasahitza" placeholder="Pasahitza" value="#{irakasleaMB.pasahitza}" />
 					
 				
-			
-					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="login" type="submit" actionListener="#{adminZerbitzuakMB.loginEgiaztatu(irakasleaMB)}"  action="irakaslearenProfila"  value="SAIOA HASI"/>
-				
+					<h:commandButton id="login"  action="#{adminZerbitzuakMB.loginEgiaztatu(irakasleaMB)}"  value="SAIOA HASI"/>
 			
 			<br/>
-			
+		
         <p>Oraindik ez zara erabiltzaile? <a href="/PARTIPARTY2/EDUKIAK/IRAKASLEA/irakasleErregistroa.xhtml">Erregistratu orain</a></p>
-				
+			<br/><h:commandButton action="/EDUKIAK/index" value="ATZERA" />
 		</h:form>
 		</div>
-		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==1}">
-				#{adminZerbitzuakMB.mezua}
-		</h:panelGroup>
-		<h:panelGroup rendered="#{adminZerbitzuakMB.kodea==2}">
-				#{adminZerbitzuakMB.mezua}
-		</h:panelGroup>
+		
 	</ui:define>
 </ui:composition>
 </html>

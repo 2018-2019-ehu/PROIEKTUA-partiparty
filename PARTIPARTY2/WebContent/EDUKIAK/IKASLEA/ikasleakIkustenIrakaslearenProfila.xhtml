@@ -8,13 +8,23 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Ongi etorri zure profilera</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
-				
-		<h2>NIRE DATUAK</h2>
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<h1>BILATU KLASE PARTIKULARRAK</h1>
+		<div id="botoiak">
+		<h:form>
+			<h:commandButton id="itzulibila1" action="bilaketa" value="BILATZEN JARRAITU" />
+		</h:form>
+		</div>
+		</div>
+		<hr></hr>
+		<h2>
+			<span class="izenburuak">DATU PERTSONALAK</span>
+		</h2>
+		<br></br>
 		<h:panelGroup>
 				<h:dataTable value="#{ikasleZerbitzuakMB.irakaslearenDatuak()}" var="i">
 					<h:column>
@@ -54,9 +64,11 @@
 				</h:dataTable>
 			</h:panelGroup>
 			<br/>
-			
-			
-			<h2>NIRE KLASEAK</h2>
+			<hr></hr>
+			<br></br>
+			<h2>
+			<span class="izenburuak">KLASEAK</span>
+			</h2>
 			<h:form>
 				<h:dataTable value="#{ikasleZerbitzuakMB.listKlaseak}" var="i">
 					<h:column>
@@ -86,7 +98,14 @@
 				<br/><br/>
 				
 			</h:form>
-			<br/><br/>
+			<div id="botoiak">
+			<h:form>
+			<br></br>
+			<hr></hr>
+		<br></br>
+				<h:commandButton  action="/EDUKIAK/index" value="SAIOA ITXI" />
+			</h:form>
+		</div>
 			
 	</ui:define>
 </ui:composition>

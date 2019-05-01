@@ -8,13 +8,15 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Telefonoa aldatu</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
-				
-		<h2>NIRE DATUAK</h2>
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<h1>Telefonoa aldatu</h1>
+		<hr />
+		<br />
+		</div>
 		<h:panelGroup>
 				<h:dataTable value="#{adminZerbitzuakMB.irakaslearenProfila()}" var="i">
 					<h:column>

@@ -8,15 +8,24 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Ongi etorri zure profilera</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<h1>Ongi etorri zure profilera!</h1>
+		<div id="botoiak">
 		<h:form>
-			<h:commandButton  value="BIRKARGATU" />
-		</h:form>		
-		<h2>NIRE DATUAK</h2>
+			<h:commandButton id="klasberri" action="bilaketa" value="KLASE BERRI BAT BILATU" />
+		</h:form>
+		</div>
+		</div>
+		
+		<hr></hr>
+		<h2>
+			<span class="izenburuak">NIRE DATUAK</span>
+		</h2>
+		
 		<h:form>
 				<h:dataTable value="#{ikasleZerbitzuakMB.ikaslearenProfila()}" var="i">
 					<h:column>
@@ -62,21 +71,22 @@
 				</h:dataTable>
 			</h:form>
 			<br/>
+			<div id="botoiak">
 			<h:form>
 				<h:commandButton id="datuak" action="ikasleaDatuakAldatu" value="DATUAK ALDATU" />
 				<h:commandButton id="pas" action="ikasleaPasahitzaAldatu" value="PASAHITZA ALDATU" />
 				<h:commandButton id="kok" action="ikasleaKokapenaAldatu" value="KOKAPENA ALDATU" />
-				<h:commandButton id="tel" action="ikasleaTelefonoaAldatu" value="TELEFONO ZENBAKIA ALDATU" />
+				<h:commandButton id="tel" action="ikasleaTelefonoaAldatu" value="TELEFONOA ALDATU" />
 				<br/><br/>
-				
 			</h:form>
-			<h:form>
-				<h:commandButton id="klasberri" action="bilaketa" value="KLASE BERRI BAT BILATU" />
-			</h:form>
+			</div>
+			
 			
 		
-			<br/><br/>
-			<h2>ONARTUTAKO ESKAERAK</h2>
+			<hr></hr>
+			<h2>
+			<span class="izenburuak">ONARTUTAKO ESKAERAK</span>
+		</h2><br></br>
 			<h:form>
 				<h:dataTable value="#{ikasleZerbitzuakMB.listEskariOnartuak}" var="onar">
 					<h:column>
@@ -106,8 +116,11 @@
 					
 				</h:dataTable>
 			</h:form>
-			<br/><br/>
-			<h2>ONARTU GABEKO ESKAERAK</h2>
+			<br></br>
+			<hr></hr>
+			<h2>
+			<span class="izenburuak">ONARTU GABEKO ESKAERAK</span>
+		</h2><br></br>
 			<h:form>
 				<h:dataTable value="#{ikasleZerbitzuakMB.listEskariEskatuak}" var="esk">
 					<h:column>
@@ -140,10 +153,15 @@
 					
 				</h:dataTable>
 			</h:form>
+		<div id="botoiak">
 			<h:form>
+			<br></br>
+			<hr></hr>
+		<br></br>
 				<h:commandButton  action="/EDUKIAK/index" value="SAIOA ITXI" />
 				<h:commandButton action="ikasleZiurtatu" value="KONTUA EZABATU" />
 			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

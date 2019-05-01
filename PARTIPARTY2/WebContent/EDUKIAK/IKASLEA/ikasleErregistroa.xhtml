@@ -8,14 +8,13 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Erregistroa</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
-		
-		<h2>Sar itzazu zure datuak erregistroa betetzeko</h2>
-		
+		<div class="burukoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="FitxLogo" />
+		</div>
+		<div id="login">
 		<h:form>
 			
 			
@@ -57,15 +56,14 @@
 			
 			<h:commandButton id="erregistroa" actionListener="#{ikasleZerbitzuakMB.ikasleaGehitu(ikasleaMB)}" action="ikasleSarrera" value="ERREGISTRATU"/>
 			
-			<br/>
 			
-				
-			<br/><br/>
 			
 		</h:form>
 		<h:form>
 			<h:commandButton id="logineraBueltatu" action="irakasleSarrera" value="LOGINERA BUELTATU"/>
 		</h:form>
+		</div>
+		
 	</ui:define>
 </ui:composition>
 </html>

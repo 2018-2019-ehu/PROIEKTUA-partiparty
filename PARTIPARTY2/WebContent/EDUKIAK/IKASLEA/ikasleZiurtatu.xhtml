@@ -8,17 +8,24 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>KONTUA EZABATU</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
-		
-		<h2>ZIUR ZAUDE KONTUA EZABATU NAHI DUZULA?</h2>
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<h1>KONTUA EZABATU</h1><br />
+		</div>
+		<hr></hr>
+			<br></br>
+			<h2>
+			<p>Ziur zaude kontua ezabatu nahi duzula?</p>
+		</h2><br></br>
+		<div id="login">
 		<h:form >
 			<h:commandButton actionListener="#{ikasleZerbitzuakMB.ikasleaEzabatu()}" action="ikasleEzabatuta" value="BAI" />
 			<h:commandButton action="ikaslearenProfila" value="EZ" />
 		</h:form>
+		</div>
 		
 	</ui:define>
 </ui:composition>

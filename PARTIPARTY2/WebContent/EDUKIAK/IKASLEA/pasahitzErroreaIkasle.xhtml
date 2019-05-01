@@ -12,33 +12,32 @@
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
-		
-		<h4>PASAHITZ OKERRA</h4>
-		
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		</div>
+		<div style="width: 100%;text-align: center;">
+		<h4>
+			<span class="oharrak">PASAHITZ OKERRA</span>
+		</h4>
+		</div>
+		<div id="login">
 		<h:form>
-			<h:dataTable value="#{ikasleaMB}" var="ikaslea">
-				<h:column>
-					<f:facet name="header">ERABILTZAILE IZENA</f:facet>
-					<h:inputText id="erabiltzaileIzena" value="#{ikaslea.erabiltzaileIzena}" />
+		<span class="fontawesome-user"></span>
+					<h:inputText id="erabiltzaileIzena" placeholder="Erabiltzaile izena" value="#{ikasleaMB.erabiltzaileIzena}" />
 				
-				</h:column>
-				<h:column>
-					<f:facet name="header">PASAHITZA</f:facet>
-					<h:inputText id="pasahitza" value="#{ikaslea.pasahitza}" />
+				
+					<span class="fontawesome-lock"></span>
+					<h:inputSecret id="pasahitza" placeholder="Pasahitza" value="#{ikasleaMB.pasahitza}" />
 					
-				</h:column>
-				<h:column>
-					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="login"  action="#{ikasleZerbitzuakMB.loginEgiaztatu(ikaslea)}"  value="SARTU"/>
-				</h:column>
-			</h:dataTable>
-			<br/>
-			
-			<h:commandButton id="erregistroa" action="ikasleErregistroa" value="ERREGISTRATU"/>
-			<h:commandButton action="/EDUKIAK/index" value="ATZERA" />
 				
+					<h:commandButton id="login"  action="#{ikasleZerbitzuakMB.loginEgiaztatu(ikasleaMB)}"  value="SAIOA HASI"/>
+			
+			<br/>
+		
+        <p>Oraindik ez zara erabiltzaile? <a href="/PARTIPARTY2/EDUKIAK/IKASLEA/ikasleErregistroa.xhtml">Erregistratu orain</a></p>
+			<br/><h:commandButton action="/EDUKIAK/index" value="ATZERA" />
 		</h:form>
+		</div>
 		
 	</ui:define>
 </ui:composition>

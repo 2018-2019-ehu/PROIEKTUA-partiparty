@@ -8,13 +8,20 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Klase berria</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
-		
-		<h2>IRAGAZKIAK</h2>
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<h1>BILATU KLASE PARTIKULARRAK</h1>
+		<div id="botoiak">
+		<h:form>
+			<h:commandButton id="lolo" action="ikaslearenProfila" value="PROFILERA ITZULI" />
+		</h:form>
+		</div>
+		</div>
+		<hr></hr>
+		<br></br>
 		
 		<h:form>
 			<h:dataTable value="#{iragazkiakMB}" var="i">
@@ -39,9 +46,12 @@
 					<h:commandButton id="bilatu" actionListener="#{ikasleZerbitzuakMB.klaseIragazkiak(i)}" action="bilaketaEmaitzak" value="BILATU"/>
 				</h:column>
 			</h:dataTable>
-			<br/>
 			</h:form>
-			<h2>BILAKETA</h2>
+			<br/><br/>
+			<hr></hr>
+			<br></br>
+			<h1>KLASE GUZTIAK</h1>
+			<br></br>
 			<h:form>
 				<h:dataTable value="#{orokorrakMB.listKlaseak}" var="i">
 					<h:column>
@@ -73,12 +83,20 @@
 					</h:column>	
 					<h:column>
 						<f:facet name="header">EKINTZA</f:facet>
-						<h:commandButton actionListener="#{ikasleZerbitzuakMB.irakasleaGorde(i.irakasleak.erabiltzaileIzena)}" action="ikasleakIkustenIrakaslearenProfila" value="IRAKASLEAREN PROFILA IKUSI" />
+						<h:commandButton actionListener="#{ikasleZerbitzuakMB.irakasleaGorde(i.irakasleak.erabiltzaileIzena)}" action="ikasleakIkustenIrakaslearenProfila" value="PROFILA IKUSI" />
 					</h:column>	
 					
 				</h:dataTable>
-				
 			</h:form>
+
+			<div id="botoiak">
+			<h:form>
+			<br></br>
+			<hr></hr>
+		<br></br>
+				<h:commandButton  action="/EDUKIAK/index" value="SAIOA ITXI" />
+			</h:form>
+		</div>
 		
 	</ui:define>
 </ui:composition>

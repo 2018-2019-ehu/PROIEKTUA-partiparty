@@ -45,7 +45,7 @@ public class adminZerbitzuakMB implements Serializable{
 			}
 			
 		}
-		irakaslea.clearForm();
+	//	irakaslea.clearForm();
 		
 		return orria;
 	}

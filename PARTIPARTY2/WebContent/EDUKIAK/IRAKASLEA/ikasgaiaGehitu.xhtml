@@ -8,13 +8,16 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Klase berria</h1>
 	</ui:define>
-	
 	<ui:define name="Edukia">
-		<br/>
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<h1>Klase berria</h1>
+		<hr />
+		<br />
+		</div>
+		<h2>Sar itzazu klase berriaren datuak:</h2><br></br>
 		
-		<h2>Idatzi ikasgai berriaren izena</h2>
 		
 			<h:form>
 				<h:dataTable value="#{klaseaMB}" var="klas">
@@ -29,9 +32,12 @@
 					</h:column>
 				</h:dataTable>
 			</h:form>
+			<p>Ez duzu ezer gehiago gehitu nahi?</p>
+			<div id="login">
 			<h:form>
-			Ez duzu ezer gehiago gehitu nahi? <h:commandButton action="klaseBatGehitu" value="ATZERA" />
+			 <h:commandButton action="klaseBatGehitu" value="ATZERA" />
 			</h:form>
+			</div>
 			
 		
 	</ui:define>

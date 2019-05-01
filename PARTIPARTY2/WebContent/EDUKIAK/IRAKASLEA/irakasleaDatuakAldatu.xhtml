@@ -8,13 +8,15 @@
 
 	<ui:define name="Izenburua">PARTIPARTY</ui:define>
 	<ui:define name="OrrialdearenHasiera">
-		<h1>Datuak aldatu</h1>
 	</ui:define>
 	
 	<ui:define name="Edukia">
-		<br/>
-				
-		<h2>NIRE DATUAK</h2>
+		<div class="logoa">
+		<img src="../IRUDIAK/LOGO1.png" alt="PPLogo" />
+		<h1>Datuak aldatu</h1>
+				<hr></hr>
+		<br />
+		</div>
 		<h:panelGroup>
 				<h:dataTable value="#{adminZerbitzuakMB.irakaslearenProfila()}" var="i">
 					<h:column>
@@ -66,7 +68,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">EKINTZA</f:facet>
-					<h:commandButton id="dat"  actionListener="#{adminZerbitzuakMB.irakaslearenDatuakAldatu(irakaslea)}"  action="irakaslearenProfila"  value="GORDE"/>
+					<h:commandButton id="dat" actionListener="#{adminZerbitzuakMB.irakaslearenDatuakAldatu(irakaslea)}"  action="irakaslearenProfila" value="GORDE"/>
 				</h:column>
 			</h:dataTable>
 			<br/>
